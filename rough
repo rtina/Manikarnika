@@ -1,0 +1,112 @@
+ <section class="service_section layout_padding">
+    <div class="service_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+            Our <span>Services</span>
+          </h2>
+          <p>
+            Our service section offers a comprehensive range of solutions tailored to meet your specific needs, ensuring outstanding quality and customer satisfaction.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-4 ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/SocialMedia.gif" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Animation
+                </h5>
+                <p>
+                  High-quality 2D and 3D animation for films, advertisements, and digital media.
+                </p>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/game.gif" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Game Design & Development
+                </h5>
+                <p>
+                  Engaging and immersive gaming experiences, from concept to launch.
+                </p>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/vfx.gif" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  VFX
+                </h5>
+                <p>
+                  Stunning visual effects that elevate storytelling and create impactful cinematic experiences.
+                </p>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/website.gif" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Website Design
+                </h5>
+                <p>
+                  User-friendly, aesthetically appealing websites that enhance brand identity and user engagement.</p>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/2d.gif" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  2D & 3D Design
+                </h5>
+                <p>
+                  Detailed character design, environment modeling, and motion graphics. </p>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- <div class="btn-box">
+          <a href="">
+            View All
+          </a>
+        </div> -->
+      </div>
+    </div>
+  </section>

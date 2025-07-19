@@ -1,0 +1,449 @@
+<%- layout("/layouts/page1Boilerplate") %>
+
+<%- include("../includes/navbar1.ejs") %>
+
+<!-- HERO SECTION -->
+<section class="relative h-screen w-full text-white overflow-hidden">
+    <!-- Background Video -->
+    <video id="backgroundVideo" autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover opacity-55 transition-opacity duration-1000">
+      <source src="video/video1.mp4" type="video/mp4" />
+    </video>
+  
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0f172a]/90 via-[#1e1b4b]/80 to-[#020617]/70"></div>
+  
+    <!-- Content -->
+    <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-xl">
+        Bringing Stories to Life
+      </h1>
+      <h2 class="text-2xl md:text-3xl font-light mt-2">Through Animation</h2>
+  
+      <p class="max-w-2xl mt-6 text-lg text-gray-300">
+        We craft stunning animations that captivate audiences and elevate brands.
+        From concept to completion, we bring your vision to life with precision and creativity.
+      </p>
+  
+      <!-- Buttons -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:brightness-110 transition">
+          View Our Work →
+        </a>
+        <a href="#" class="border border-white text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition">
+          ▶ Watch Showreel
+        </a>
+      </div>
+  
+      <!-- Scroll indicator -->
+      <div class="mt-10 text-2xl animate-bounce">🖱️</div>
+    </div>
+  </section>
+
+  
+  
+<!-- ======================= Our showreels section ============================== -->
+
+<section class="bg-[#0e1628] text-white py-20 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+      <!-- Title -->
+      <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 mb-4">
+        Our Showreel
+      </h2>
+  
+      <!-- Subtitle -->
+      <p class="text-sm md:text-base text-gray-300 mb-10">
+        Discover our latest animations and see how we transform ideas into captivating visual stories
+      </p>
+  
+      <!-- Video Embed -->
+      <div class="w-full max-w-2xl h-auto mx-auto mb-10 rounded-xl overflow-hidden shadow-lg">
+        <video 
+        class="w-full h-full object-cover rounded-xl" 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        poster="/images/showreel-thumbnail.jpg"
+      >
+        <source src="video/video3.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      </div>
+  
+      <!-- Button -->
+      <a href="#" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-semibold hover:brightness-110 transition">
+        Watch Full Portfolio
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M12.293 2.293a1 1 0 011.414 0L19 7.586a1 1 0 010 1.414l-5.293 5.293a1 1 0 01-1.414-1.414L15.586 9H5a1 1 0 110-2h10.586l-3.293-3.293a1 1 0 010-1.414z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+  
+  <!-- ====================== Our Service section  ============================ -->
+
+  <section class="bg-[#0e1628] py-16 overflow-hidden text-white">
+    <div class="text-center mb-12 px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+        What We Do
+      </h2>
+      
+    </div>
+  
+    <div class="relative w-full overflow-hidden">
+      <div class="flex gap-6 animate-marquee whitespace-nowrap px-4">
+        <!-- Duplicated cards for infinite scroll illusion -->
+        <div class="flex gap-6">
+          <!-- Card 1 -->
+          <div class="bg-[#141e36] rounded-xl p-6 w-64 shrink-0 shadow-md hover:shadow-lg transition duration-300">
+            <!-- Service Icon/Image -->
+            <div class="mb-4">
+              <img src="images/img1.jpg" alt="VFX & Compositing" class="w-20 h-20 object-contain mx-auto" />
+            </div>
+          
+            <!-- Title -->
+            <h3 class="text-lg font-semibold text-white text-center mb-1">
+              VFX & Compositing
+            </h3>
+        
+          </div>
+          
+          
+  
+          <!-- Card 2 -->
+          <div class="bg-[#141e36] rounded-xl p-6 w-64 shrink-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="text-purple-400 text-3xl mb-4">📦</div>
+            <h3 class="text-lg font-semibold mb-1">3D Animation</h3>
+            </div>
+  
+          <!-- Card 3 -->
+          <div class="bg-[#141e36] rounded-xl p-6 w-64 shrink-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="text-pink-400 text-3xl mb-4">⚡</div>
+            <h3 class="text-lg font-semibold mb-1">Motion Graphics</h3>
+            </div>
+  
+          <!-- Card 4 -->
+          <div class="bg-[#141e36] rounded-xl p-6 w-64 shrink-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="text-green-400 text-3xl mb-4">🧬</div>
+            <h3 class="text-lg font-semibold mb-1">Character Design</h3>
+            </div>
+  
+          <!-- Card 5 -->
+          <div class="bg-[#141e36] rounded-xl p-6 w-64 shrink-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="text-yellow-400 text-3xl mb-4">🎞️</div>
+            <h3 class="text-lg font-semibold mb-1">VFX & Compositing</h3>
+            </div>
+  
+          <!-- Card 6 -->
+          <div class="bg-[#141e36] rounded-xl p-6 w-64 shrink-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="text-teal-400 text-3xl mb-4">📋</div>
+            <h3 class="text-lg font-semibold mb-1">Storyboarding</h3>
+            </div>
+        </div>
+  
+        <!-- Duplicate again for looping -->
+        <div class="flex gap-6">
+          <!-- Repeat same 6 cards for smooth infinite scroll -->
+          <!-- You can just copy the same above set again here -->
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ====================== Our testimonal  ========================= -->
+
+  <section class="bg-black text-white py-16 px-4 md:px-20">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-purple-400 mb-4">What Our Clients Say</h2>
+      <p class="text-lg text-blue-300">Don't just take our word for it. Here's what industry leaders have to say about our work</p>
+    </div>
+  
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Testimonial Card 1 -->
+      <div class="relative bg-[#0f172a] p-6 rounded-xl shadow-lg">
+        <div class="absolute -top-5 -left-5 bg-purple-500 text-white p-2 rounded-full">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 11.5a2.5 2.5 0 1 1 0-5H10V3H7.5A4.5 4.5 0 0 0 3 7.5v4A4.5 4.5 0 0 0 7.5 16H9v-1.5zm9 0a2.5 2.5 0 1 1 0-5H19V3h-2.5A4.5 4.5 0 0 0 12 7.5v4a4.5 4.5 0 0 0 4.5 4.5H18v-1.5z"/>
+          </svg>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Sarah Johnson" class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h3 class="font-bold text-lg">Sarah Johnson</h3>
+            <p class="text-sm">Creative Director</p>
+            <p class="text-sm text-blue-400">Netflix</p>
+          </div>
+        </div>
+        <div class="flex items-center text-yellow-400 mb-3">
+          ★★★★★
+        </div>
+        <p class="italic text-gray-300">"AnimateStudio transformed our vision into a stunning animated series. Their attention to detail and creative storytelling exceeded our expectations."</p>
+      </div>
+  
+      <!-- Testimonial Card 2 -->
+      <div class="relative bg-[#0f172a] p-6 rounded-xl shadow-lg">
+        <div class="absolute -top-5 -left-5 bg-purple-500 text-white p-2 rounded-full">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 11.5a2.5 2.5 0 1 1 0-5H10V3H7.5A4.5 4.5 0 0 0 3 7.5v4A4.5 4.5 0 0 0 7.5 16H9v-1.5zm9 0a2.5 2.5 0 1 1 0-5H19V3h-2.5A4.5 4.5 0 0 0 12 7.5v4a4.5 4.5 0 0 0 4.5 4.5H18v-1.5z"/>
+          </svg>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Michael Chen" class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h3 class="font-bold text-lg">Michael Chen</h3>
+            <p class="text-sm">Marketing Manager</p>
+            <p class="text-sm text-blue-400">Apple</p>
+          </div>
+        </div>
+        <div class="flex items-center text-yellow-400 mb-3">
+          ★★★★★
+        </div>
+        <p class="italic text-gray-300">"The motion graphics work they delivered was exceptional. Professional, creative, and delivered on time. Highly recommend their services."</p>
+      </div>
+  
+      <!-- Testimonial Card 3 -->
+      <div class="relative bg-[#0f172a] p-6 rounded-xl shadow-lg">
+        <div class="absolute -top-5 -left-5 bg-purple-500 text-white p-2 rounded-full">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 11.5a2.5 2.5 0 1 1 0-5H10V3H7.5A4.5 4.5 0 0 0 3 7.5v4A4.5 4.5 0 0 0 7.5 16H9v-1.5zm9 0a2.5 2.5 0 1 1 0-5H19V3h-2.5A4.5 4.5 0 0 0 12 7.5v4a4.5 4.5 0 0 0 4.5 4.5H18v-1.5z"/>
+          </svg>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Emma Rodriguez" class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h3 class="font-bold text-lg">Emma Rodriguez</h3>
+            <p class="text-sm">Film Producer</p>
+            <p class="text-sm text-blue-400">Warner Bros</p>
+          </div>
+        </div>
+        <div class="flex items-center text-yellow-400 mb-3">
+          ★★★★★
+        </div>
+        <p class="italic text-gray-300">"Outstanding 3D animation work that brought our characters to life. The team is incredibly talented and professional."</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ========================= Team section ============================ -->
+
+  <section class="bg-[#0b1120] text-white py-20 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <!-- Title -->
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
+        Meet Our Team
+      </h2>
+      <p class="text-gray-400 mb-16 max-w-2xl mx-auto">
+        Our talented team of artists, animators, and creative professionals bring decades of experience to every project
+      </p>
+  
+  
+      <!-- Team Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Member -->
+        <div class="bg-[#111827] p-6 rounded-xl shadow-md text-center relative">
+          <div class="w-24 h-24 mx-auto mb-4 relative">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-full border-4 border-indigo-500" />
+            <span class="absolute bottom-1 right-1 w-3 h-3 bg-green-400 rounded-full ring-2 ring-[#111827]"></span>
+          </div>
+          <h3 class="font-bold text-lg">Alex Thompson</h3>
+          <p class="text-blue-400 text-sm">Creative Director</p>
+          <p class="text-gray-400 text-xs">3D Animation & VFX</p>
+          <div class="bg-gray-700 text-gray-200 text-xs inline-block px-2 py-1 rounded-full mt-3">12+ years</div>
+        </div>
+  
+        <!-- Member -->
+        <div class="bg-[#111827] p-6 rounded-xl shadow-md text-center relative">
+          <div class="w-24 h-24 mx-auto mb-4 relative">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="rounded-full border-4 border-pink-500" />
+            <span class="absolute bottom-1 right-1 w-3 h-3 bg-green-400 rounded-full ring-2 ring-[#111827]"></span>
+          </div>
+          <h3 class="font-bold text-lg">Maya Patel</h3>
+          <p class="text-pink-400 text-sm">Lead Animator</p>
+          <p class="text-gray-400 text-xs">2D Animation & Character Design</p>
+          <div class="bg-gray-700 text-gray-200 text-xs inline-block px-2 py-1 rounded-full mt-3">8+ years</div>
+        </div>
+  
+        <!-- Member -->
+        <div class="bg-[#111827] p-6 rounded-xl shadow-md text-center relative">
+          <div class="w-24 h-24 mx-auto mb-4 relative">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-full border-4 border-green-400" />
+            <span class="absolute bottom-1 right-1 w-3 h-3 bg-green-400 rounded-full ring-2 ring-[#111827]"></span>
+          </div>
+          <h3 class="font-bold text-lg">David Kim</h3>
+          <p class="text-green-400 text-sm">Motion Graphics Artist</p>
+          <p class="text-gray-400 text-xs">Typography & Brand Animation</p>
+          <div class="bg-gray-700 text-gray-200 text-xs inline-block px-2 py-1 rounded-full mt-3">10+ years</div>
+        </div>
+  
+        <!-- Member -->
+        <div class="bg-[#111827] p-6 rounded-xl shadow-md text-center relative">
+          <div class="w-24 h-24 mx-auto mb-4 relative">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-full border-4 border-yellow-500" />
+            <span class="absolute bottom-1 right-1 w-3 h-3 bg-green-400 rounded-full ring-2 ring-[#111827]"></span>
+          </div>
+          <h3 class="font-bold text-lg">Sophie Chen</h3>
+          <p class="text-yellow-400 text-sm">VFX Supervisor</p>
+          <p class="text-gray-400 text-xs">Compositing & Post-Production</p>
+          <div class="bg-gray-700 text-gray-200 text-xs inline-block px-2 py-1 rounded-full mt-3">15+ years</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ========================= let do section ============================ -->
+
+  <section class="bg-gradient-to-r from-[#161642] via-[#251547] to-[#3b0a3d] text-white py-20 px-6 text-center">
+    <div class="max-w-4xl mx-auto">
+      <!-- Heading -->
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+        Let's Animate Your Vision
+      </h2>
+  
+      <!-- Subtext -->
+      <p class="text-lg text-gray-300 mb-8">
+        Ready to bring your ideas to life? Whether it's a feature film, commercial campaign, or educational series, we're here to make it happen.
+      </p>
+  
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+        <a href="#" class="bg-white text-gray-900 px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:shadow-lg transition">
+          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5a2 2 0 002 2z" />
+          </svg>
+          Schedule a Call
+        </a>
+  
+        <a href="#" class="border border-white text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-white hover:text-gray-900 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+          Start a Project
+        </a>
+      </div>
+  
+      <!-- Metrics -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+          <h3 class="text-2xl font-bold">24h</h3>
+          <p class="text-sm text-gray-300">Response Time</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+          <h3 class="text-2xl font-bold">500+</h3>
+          <p class="text-sm text-gray-300">Projects Completed</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+          <h3 class="text-2xl font-bold">98%</h3>
+          <p class="text-sm text-gray-300">Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== Our contact section ======================== -->
+
+  <section class="bg-[#0d1128] text-white py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-violet-400">Contact Us</h2>
+        <p class="mt-2 text-gray-300">
+          Ready to start your animation project? Get in touch with our team to discuss your vision
+        </p>
+      </div>
+  
+      <!-- Contact Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Left Side: Info and Map -->
+        <div class="flex flex-col gap-6">
+          <!-- Contact Info -->
+          <div class="bg-[#1b223d] rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+            <div class="flex items-start gap-4 mb-4">
+              <div class="text-violet-400 text-2xl">✉️</div>
+              <div>
+                <p class="font-medium">Email</p>
+                <p class="text-sm text-gray-300">hello@animatestudio.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 mb-4">
+              <div class="text-violet-400 text-2xl">📞</div>
+              <div>
+                <p class="font-medium">Phone</p>
+                <p class="text-sm text-gray-300">+1 (555) 123-4567</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="text-violet-400 text-2xl">📍</div>
+              <div>
+                <p class="font-medium">Office</p>
+                <p class="text-sm text-gray-300">123 Animation Street<br>Los Angeles, CA 90210</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Map Placeholder -->
+          <div class="bg-[#1b223d] rounded-lg p-6 flex flex-col items-center justify-center text-center">
+            <div class="text-blue-400 text-3xl mb-2">📍</div>
+            <p class="font-medium">Interactive Map</p>
+            <p class="text-sm text-gray-400">Los Angeles, California</p>
+          </div>
+        </div>
+  
+        <!-- Right Side: Contact Form -->
+        <div class="bg-[#1b223d] rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-4">Send us a Message</h3>
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm mb-1">Name *</label>
+                <input type="text" placeholder="Your name" class="w-full bg-[#2a2f45] text-white p-3 rounded focus:outline-none focus:ring focus:ring-violet-500" required>
+              </div>
+              <div>
+                <label class="block text-sm mb-1">Email *</label>
+                <input type="email" placeholder="your@email.com" class="w-full bg-[#2a2f45] text-white p-3 rounded focus:outline-none focus:ring focus:ring-violet-500" required>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Company</label>
+              <input type="text" placeholder="Your company name" class="w-full bg-[#2a2f45] text-white p-3 rounded focus:outline-none focus:ring focus:ring-violet-500">
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Message *</label>
+              <textarea rows="4" placeholder="Tell us about your project..." class="w-full bg-[#2a2f45] text-white p-3 rounded resize-none focus:outline-none focus:ring focus:ring-violet-500" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white py-3 rounded font-medium flex justify-center items-center gap-2 transition">
+              ✉️ Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    const videoElement = document.getElementById("backgroundVideo");
+    const source = videoElement.querySelector("source");
+  
+    const videos = [
+      "video/video1.mp4",
+      "video/video2.mp4",
+      "video/video3.mp4"
+    ];
+  
+    let currentIndex = 0;
+  
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % videos.length;
+      source.src = videos[currentIndex];
+      videoElement.load();
+      videoElement.play();
+    }, 15000); // change every 15 seconds
+  </script>
+  
