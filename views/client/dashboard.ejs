@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-black text-white">
+    <section class="min-h-screen bg-[#0f172a] text-white flex">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-[#111827] p-6 flex flex-col gap-6 border-r border-[#1f2937]">
+        
+       <a href="/page2" class="flex items-center gap-2"> <img src="images/img2.png" alt="Logo" class="w-10 h-10" /><span class="text-xl font-bold text-indigo-300">ManikarnikaStudio</span></a>
+        <div class="flex items-center gap-4">
+          <img src="https://i.pravatar.cc/40" class="rounded-full w-10 h-10" alt="User" />
+          <div>
+            <p class="text-sm font-semibold">Allen Clerk</p>
+            <p class="text-xs text-gray-400">$3,400.00</p>
+          </div>
+        </div>
+        <nav class="flex-1">
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="block px-2 py-1 rounded bg-blue-600">Dashboard</a></li>
+            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Payment History</a></li>
+            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">My projects</a></li>
+            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Forms</a></li>
+            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Advanced Tables</a></li>
+            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Charts</a></li>
+            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Icons</a></li>
+          </ul>
+        </nav>
+        <button class="bg-gray-800 p-3 rounded text-white text-sm flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          Create New Board
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 space-y-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-semibold">Dashboard</h1>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="bg-[#1e293b] text-sm text-white px-4 py-2 rounded focus:outline-none"
+          />
+        </div>
+
+        <!-- Cards Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div class="bg-[#1e293b] p-4 rounded shadow">
+            <p class="text-sm">Traffic</p>
+            <p class="text-xl font-semibold">30%</p>
+            <p class="text-xs text-green-400">+6.2%</p>
+          </div>
+          <div class="bg-[#1e293b] p-4 rounded shadow">
+            <p class="text-sm">Conversion</p>
+            <p class="text-xl font-semibold">43%</p>
+            <p class="text-xs text-green-400">+11.75%</p>
+          </div>
+          <div class="bg-[#1e293b] p-4 rounded shadow">
+            <p class="text-sm">Bounce Rate</p>
+            <p class="text-xl font-semibold">23%</p>
+            <p class="text-xs text-green-400">+2.7%</p>
+          </div>
+          <div class="bg-[#1e293b] p-4 rounded shadow">
+            <p class="text-sm">Marketing</p>
+            <p class="text-xl font-semibold">78%</p>
+            <p class="text-xs text-red-400">-5.34%</p>
+          </div>
+          <div class="bg-[#1e293b] p-4 rounded shadow">
+            <p class="text-sm">Followers</p>
+            <p class="text-xl font-semibold">16.2K</p>
+            <p class="text-xs text-green-400">+3.2K</p>
+          </div>
+        </div>
+
+        <!-- Middle Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <!-- Chart Placeholder -->
+          <div class="bg-[#1e293b] p-6 rounded shadow col-span-2">
+            <h2 class="text-sm font-semibold mb-2">Followers Growth</h2>
+            <div class="h-40 bg-[#0f172a] rounded"></div>
+          </div>
+
+          <!-- Campaign Progress -->
+          <div class="bg-[#1e293b] p-6 rounded shadow">
+            <h2 class="text-sm font-semibold mb-2">Campaign</h2>
+            <div class="flex flex-col items-center">
+              <div class="w-24 h-24 bg-[#0f172a] rounded-full mb-4 flex items-center justify-center text-lg font-bold">
+                67%
+              </div>
+              <p class="text-sm text-center">
+                $23,350.00<br />
+                <span class="text-gray-400 text-xs">Used balance this billing cycle</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Placeholder -->
+        <div class="bg-[#1e293b] p-6 rounded shadow">
+          <h2 class="text-sm font-semibold mb-4">Available Balance</h2>
+          <p class="text-3xl font-mono">26.00453100 <span class="text-yellow-400">BTC</span></p>
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
+
+<script src="https://cdn.tailwindcss.com"></script>

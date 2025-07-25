@@ -1,0 +1,176 @@
+<%- layout("/layouts/page1Boilerplate") %>
+
+<section class="bg-black text-white py-16 px-4 ">
+  <div class="max-w-6xl mx-auto text-center ">
+    <!-- Heading -->
+    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-400 mt-10">Animation Catalogue</h1>
+    <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">
+      Explore our complete collection of animated works spanning feature films, commercials, educational content, and more. Each project represents our commitment to storytelling excellence.
+    </p>
+
+    
+   
+  </div>
+</section>
+
+<!-- =================== Catalogue page items ==================== -->
+<section class="bg-black text-white px-4 py-16">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Search and Filter -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+      <input type="text" placeholder="🔍 Search projects, clients, or tags..."
+        class="w-full md:w-80 px-4 py-2 rounded-md bg-[#0f172a] border border-[#1e293b] text-sm placeholder-gray-400" />
+
+      <div class="flex flex-wrap gap-2 text-sm">
+        <button class="bg-indigo-500 px-3 py-1 rounded-full text-white">All Work</button>
+        <button class="bg-[#1e293b] px-3 py-1 rounded-full">2D Animation</button>
+        <button class="bg-[#1e293b] px-3 py-1 rounded-full">3D Animation</button>
+        <button class="bg-[#1e293b] px-3 py-1 rounded-full">Illustration</button>
+        <button class="bg-[#1e293b] px-3 py-1 rounded-full">VFX & Compositing</button>
+        <button class="bg-[#1e293b] px-3 py-1 rounded-full">Motion Graphics</button>
+        <button class="bg-[#1e293b] px-3 py-1 rounded-full">Character Design</button>
+      </div>
+
+      <!-- <div class="text-sm px-3 py-1 rounded-md bg-[#1e293b] text-gray-300">🔳 Grid</div> -->
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Project Card -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="https://images.pexels.com/photos/18069362/pexels-photo-18069362.png" alt="Epic Fantasy Adventure" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">DREAMWORKS STUDIOS</p>
+          <h3 class="text-lg font-semibold mt-1">Epic Fantasy Adventure</h3>
+          <p class="text-xs text-gray-400 mt-1">2024</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">3D Animation</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">VFX</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Awarded</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="https://images.pexels.com/photos/28655002/pexels-photo-28655002.jpeg" alt="Nike Air Revolution" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">NIKE</p>
+          <h3 class="text-lg font-semibold mt-1">Nike Air Revolution</h3>
+          <p class="text-xs text-gray-400 mt-1">2024</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Motion Graphics</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Abstract</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Brand Identity</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="/assets/project3.jpg" alt="Ocean Mysteries" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">NATIONAL GEOGRAPHIC</p>
+          <h3 class="text-lg font-semibold mt-1">Ocean Mysteries</h3>
+          <p class="text-xs text-gray-400 mt-1">2023</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Animation</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Science</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Underwater</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="/assets/project4.jpg" alt="Cyberpunk Chronicles" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">EPIC GAMES</p>
+          <h3 class="text-lg font-semibold mt-1">Cyberpunk Chronicles</h3>
+          <p class="text-xs text-gray-400 mt-1">2024</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Character Animation</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">3D</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="/assets/project5.jpg" alt="Midnight Dreams" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">UNIVERSAL MUSIC</p>
+          <h3 class="text-lg font-semibold mt-1">Midnight Dreams</h3>
+          <p class="text-xs text-gray-400 mt-1">2023</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Awarded</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Music Video</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Fantasy</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="/assets/project6.jpg" alt="Corporate Vision 2030" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">MICROSOFT</p>
+          <h3 class="text-lg font-semibold mt-1">Corporate Vision 2030</h3>
+          <p class="text-xs text-gray-400 mt-1">2024</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Character Design</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Digital Art</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="/assets/project7.jpg" alt="Animated Explainer Series" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">TED-ED</p>
+          <h3 class="text-lg font-semibold mt-1">Animated Explainer Series</h3>
+          <p class="text-xs text-gray-400 mt-1">2024</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Animated</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Educational</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Science</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <!-- Project 8 -->
+      <div class="bg-[#111827] rounded-xl overflow-hidden border border-[#1f2937] shadow hover:shadow-xl transition duration-300">
+        <img src="/assets/project8.jpg" alt="Hero Character Collection" class="w-full h-40 object-cover" />
+        <div class="p-4">
+          <p class="text-xs text-indigo-400 uppercase">MARVEL STUDIOS</p>
+          <h3 class="text-lg font-semibold mt-1">Hero Character Collection</h3>
+          <p class="text-xs text-gray-400 mt-1">2023</p>
+          <div class="flex flex-wrap gap-1 text-xs mt-3">
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Character Design</span>
+            <span class="bg-[#1e293b] px-2 py-0.5 rounded-full text-gray-300">Turnarounds</span>
+          </div>
+          <a href="#" class="block mt-4 text-sm text-indigo-400 hover:underline">View Details</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-10">
+      <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full text-sm">
+        Load More Projects
+      </button>
+    </div>
+
+  </div>
+</section>

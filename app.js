@@ -19,6 +19,22 @@ app.get("/page2" , (req,res)=>{
     res.render("client/page1.ejs");
 });
 
-app.listen(8082,()=>{
-    console.log("listening on port 8082");
+app.get("/catalogue" , (req,res)=>{
+    res.render("client/catalogue.ejs");
+})
+
+app.get("/signin" , (req,res)=>{
+    res.render("users/signin.ejs");
+})
+
+app.get("/signup" , (req,res)=>{
+    res.render("users/signup.ejs");
+})
+
+app.get("/dashboard" , (req,res)=>{
+    res.render("client/dashboard.ejs");
+})
+
+app.listen(4000,()=>{
+    console.log("listening on port 4000");
 })
