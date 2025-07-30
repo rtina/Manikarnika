@@ -3,113 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dark Admin Dashboard</title>
+    <title>Client Dashboard - Manikarnika Studio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body class="bg-black text-white">
     <section class="min-h-screen bg-[#0f172a] text-white flex">
       <!-- Sidebar -->
-      <aside class="w-64 bg-[#111827] p-6 flex flex-col gap-6 border-r border-[#1f2937]">
-        
-       <a href="/" class="flex items-center gap-2"> <img src="images/img2.png" alt="Logo" class="w-10 h-10" /><span class="text-xl font-bold text-indigo-300">ManikarnikaStudio</span></a>
+      <aside class="w-72 bg-[#111827] p-6 flex flex-col gap-6 border-r border-[#1f2937]">
+        <a href="#" class="flex items-center gap-2">
+          <img src="images/img2.png" alt="Logo" class="w-10 h-10" />
+          <span class="text-xl font-bold text-indigo-300">ManikarnikaStudio</span>
+        </a>
+
         <div class="flex items-center gap-4">
           <img src="https://i.pravatar.cc/40" class="rounded-full w-10 h-10" alt="User" />
           <div>
             <p class="text-sm font-semibold">Allen Clerk</p>
-            <p class="text-xs text-gray-400">$3,400.00</p>
+            <p class="text-xs text-gray-400">Client</p>
           </div>
         </div>
+
         <nav class="flex-1">
           <ul class="space-y-3 text-sm">
-            <li><a href="#" class="block px-2 py-1 rounded bg-blue-600">Dashboard</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Payment History</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">My projects</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Forms</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Advanced Tables</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Charts</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Icons</a></li>
+            <li><a href="#" onclick="showSection('home')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Home</a></li>
+            <li><a href="#" onclick="showSection('profile')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Profile</a></li>
+            <li><a href="#" onclick="showSection('activities')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Activities</a></li>
+            <li><a href="#" onclick="showSection('tracking')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Project Tracking</a></li>
+            <li><a href="#" onclick="showSection('payment')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Payment History</a></li>
+            <li><a href="#" onclick="showSection('chat')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Chat</a></li>
+            <li><a href="#" onclick="showSection('video')" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Video Call</a></li>
           </ul>
         </nav>
-        <button class="bg-gray-800 p-3 rounded text-white text-sm flex items-center justify-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-          </svg>
-          Create New Board
-        </button>
       </aside>
 
       <!-- Main Content -->
       <main class="flex-1 p-6 space-y-6">
         <!-- Header -->
         <div class="flex justify-between items-center">
-          <h1 class="text-2xl font-semibold">Dashboard</h1>
-          <input
-            type="text"
-            placeholder="Search..."
-            class="bg-[#1e293b] text-sm text-white px-4 py-2 rounded focus:outline-none"
-          />
-        </div>
-
-        <!-- Cards Row -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Traffic</p>
-            <p class="text-xl font-semibold">30%</p>
-            <p class="text-xs text-green-400">+6.2%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Conversion</p>
-            <p class="text-xl font-semibold">43%</p>
-            <p class="text-xs text-green-400">+11.75%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Bounce Rate</p>
-            <p class="text-xl font-semibold">23%</p>
-            <p class="text-xs text-green-400">+2.7%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Marketing</p>
-            <p class="text-xl font-semibold">78%</p>
-            <p class="text-xs text-red-400">-5.34%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Followers</p>
-            <p class="text-xl font-semibold">16.2K</p>
-            <p class="text-xs text-green-400">+3.2K</p>
-          </div>
-        </div>
-
-        <!-- Middle Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <!-- Chart Placeholder -->
-          <div class="bg-[#1e293b] p-6 rounded shadow col-span-2">
-            <h2 class="text-sm font-semibold mb-2">Followers Growth</h2>
-            <div class="h-40 bg-[#0f172a] rounded"></div>
-          </div>
-
-          <!-- Campaign Progress -->
-          <div class="bg-[#1e293b] p-6 rounded shadow">
-            <h2 class="text-sm font-semibold mb-2">Campaign</h2>
-            <div class="flex flex-col items-center">
-              <div class="w-24 h-24 bg-[#0f172a] rounded-full mb-4 flex items-center justify-center text-lg font-bold">
-                67%
+          <h1 class="text-2xl font-semibold">Welcome, Allen</h1>
+          <div class="flex gap-4 items-center">
+            <input type="text" placeholder="Search projects..." class="bg-[#1e293b] text-sm text-white px-4 py-2 rounded focus:outline-none" />
+            <div class="relative group">
+              <button class="focus:outline-none transition-transform duration-200 transform hover:rotate-12">⚙️</button>
+              <div class="absolute right-0 mt-2 w-32 bg-[#1e293b] rounded shadow-lg p-2 text-sm hidden group-hover:block">
+                <a href="#" class="block px-2 py-1 hover:bg-[#374151] rounded">Settings</a>
+                <a href="#" class="block px-2 py-1 hover:bg-[#374151] rounded">Logout</a>
               </div>
-              <p class="text-sm text-center">
-                $23,350.00<br />
-                <span class="text-gray-400 text-xs">Used balance this billing cycle</span>
-              </p>
             </div>
           </div>
         </div>
 
-        <!-- Table Placeholder -->
-        <div class="bg-[#1e293b] p-6 rounded shadow">
-          <h2 class="text-sm font-semibold mb-4">Available Balance</h2>
-          <p class="text-3xl font-mono">26.00453100 <span class="text-yellow-400">BTC</span></p>
+        <!-- Dynamic Content Sections -->
+        <div id="home" class="block animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Dashboard Overview</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+              <h3 class="text-lg font-semibold mb-2">Active Projects</h3>
+              <p class="text-sm">4 Ongoing Projects</p>
+            </div>
+            <div class="bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+              <h3 class="text-lg font-semibold mb-2">Recent Payments</h3>
+              <p class="text-sm">₹12,000 received</p>
+            </div>
+            <div class="bg-gradient-to-br from-green-600 to-green-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+              <h3 class="text-lg font-semibold mb-2">New Messages</h3>
+              <p class="text-sm">2 unread messages</p>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-600 to-yellow-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+              <h3 class="text-lg font-semibold mb-2">Upcoming Deadlines</h3>
+              <p class="text-sm">2 tasks this week</p>
+            </div>
+          </div>
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#1e293b] p-4 rounded shadow-lg">
+              <h3 class="text-lg font-semibold mb-2">Overview Chart</h3>
+              <div class="h-40 bg-[#0f172a] rounded flex items-center justify-center">📊 Chart Placeholder</div>
+            </div>
+            <div class="bg-[#1e293b] p-4 rounded shadow-lg">
+              <h3 class="text-lg font-semibold mb-2">Quick Uploads</h3>
+              <input type="file" class="bg-[#0f172a] p-2 w-full rounded text-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div id="profile" class="hidden animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Edit Profile</h2>
+          <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="Full Name" class="bg-[#1e293b] p-2 rounded" />
+            <input type="email" placeholder="Email" class="bg-[#1e293b] p-2 rounded" />
+            <input type="text" placeholder="Company/Studio" class="bg-[#1e293b] p-2 rounded" />
+            <input type="text" placeholder="Role/Title" class="bg-[#1e293b] p-2 rounded" />
+            <textarea placeholder="Bio or Description" rows="4" class="bg-[#1e293b] p-2 rounded col-span-2"></textarea>
+            <button type="submit" class="bg-indigo-600 px-4 py-2 rounded col-span-2">Update Profile</button>
+          </form>
+        </div>
+
+        <div id="activities" class="hidden animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Recent Activities</h2>
+          <ul class="space-y-2">
+            <li class="bg-[#1e293b] p-4 rounded">✔️ Submitted reference files for Animation Project A</li>
+            <li class="bg-[#1e293b] p-4 rounded">💬 Messaged team regarding feedback on Project B</li>
+            <li class="bg-[#1e293b] p-4 rounded">📤 Uploaded final deliverables for VFX Scene 3</li>
+          </ul>
+        </div>
+
+        <div id="tracking" class="hidden animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Project Tracking</h2>
+          <p class="bg-[#1e293b] p-4 rounded">Track progress of ongoing and completed projects here (Gantt or status representation can be integrated).</p>
+        </div>
+
+        <div id="payment" class="hidden animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Payment History</h2>
+          <ul class="space-y-2">
+            <li class="bg-[#1e293b] p-4 rounded">✅ ₹6000 paid for 3D Modeling</li>
+            <li class="bg-[#1e293b] p-4 rounded">✅ ₹3000 paid for Animation</li>
+          </ul>
+        </div>
+
+        <div id="chat" class="hidden animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Chat</h2>
+          <p class="bg-[#1e293b] p-4 rounded">Live chat integration with real-time messaging between client and assigned team members (e.g., socket.io).</p>
+        </div>
+
+        <div id="video" class="hidden animate-fade-in">
+          <h2 class="text-xl font-semibold mb-4">Video Call</h2>
+          <p class="bg-[#1e293b] p-4 rounded">Integrate third-party API (e.g., Jitsi Meet, Twilio) for real-time video communication.</p>
         </div>
       </main>
     </section>
+
+    <script>
+      function showSection(sectionId) {
+        const sections = ['home', 'profile', 'activities', 'tracking', 'payment', 'chat', 'video'];
+        sections.forEach(id => {
+          document.getElementById(id).classList.add('hidden');
+        });
+        document.getElementById(sectionId).classList.remove('hidden');
+      }
+    </script>
   </body>
 </html>
-
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
