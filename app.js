@@ -13,26 +13,27 @@ app.engine('ejs', ejsMate);
 
 // ========================all the routes=================================
 app.get("/",(req,res)=>{
-    res.render("client/index.ejs");
+    res.render("public/home.ejs");
 })
-app.get("/page2" , (req,res)=>{
-    res.render("client/page1.ejs");
-});
 
 app.get("/catalogue" , (req,res)=>{
-    res.render("client/catalogue.ejs");
+    res.render("public/catalogue.ejs");
 })
 
 app.get("/signin" , (req,res)=>{
-    res.render("users/signin.ejs");
+    res.render("public/signin.ejs");
 })
 
 app.get("/signup" , (req,res)=>{
-    res.render("users/signup.ejs");
+    res.render("public/signup.ejs");
 })
 
 app.get("/dashboard" , (req,res)=>{
     res.render("client/dashboard.ejs");
+})
+
+app.get("/services" , (req,res)=>{
+    res.render("public/service.ejs");
 })
 
 app.listen(4000,()=>{
