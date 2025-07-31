@@ -110,3 +110,603 @@
       </div>
     </div>
   </section>
+
+
+
+  <!-- admin dashboard code roughly add here for backup -->
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfitPulse Dashboard (Dark Theme)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom scrollbar styles for Webkit browsers (Chrome, Safari, Edge) */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f2937; /* Darker gray for track */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #4b5563; /* Medium gray for thumb */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #6b7280; /* Lighter gray on hover */
+        }
+        /* Hide scrollbar for specific elements if needed, though not explicitly asked */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Specific styles for the "Paid" and "Delivered" tags */
+        .status-tag {
+            padding: 0.25rem 0.75rem; /* px-3 py-1 */
+            border-radius: 9999px; /* rounded-full */
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            display: inline-block;
+        }
+        .status-paid {
+            background-color: #fcd34d; /* yellow-400 */
+            color: #78350f; /* yellow-900 */
+        }
+        .status-delivered {
+            background-color: #94a3b8; /* slate-400 */
+            color: #1e293b; /* slate-900 */
+        }
+        .status-completed {
+            background-color: #86efac; /* green-300 */
+            color: #14532d; /* green-900 */
+        }
+
+        /* For the right sidebar's subtle top border - adjust for dark theme */
+        .right-sidebar-top-border {
+            border-top: 1px solid #374151; /* gray-700 */
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900 font-sans antialiased text-gray-200">
+
+    <div class="flex min-h-screen bg-gray-900">
+
+        <aside class="w-64 bg-gray-800 flex flex-col py-6 px-4 border-r border-gray-700 shadow-lg">
+            <div class="flex items-center mb-10 pl-2">
+                <a href="/" class="flex items-center mb-10 pl-2">
+                    <i class="fas fa-chart-line text-blue-500 text-3xl mr-2"></i>
+                    <span class="text-gray-50 text-2xl font-bold">Manikarnika <br>Studio</span>
+                </a>
+            </div>
+            <nav class="flex-grow">
+                <ul>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-tachometer-alt mr-4 text-xl"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl bg-gray-700 text-blue-400 font-semibold">
+                            <i class="fas fa-boxes mr-4 text-xl"></i> Orders
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-credit-card mr-4 text-xl"></i> Payments
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-users mr-4 text-xl"></i> Customers
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-chart-bar mr-4 text-xl"></i> Reports
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-chart-pie mr-4 text-xl"></i> Statistic
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-bell mr-4 text-xl"></i> Notification
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mt-auto">
+                <ul class="pt-4 border-t border-gray-700">
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-question-circle mr-4 text-xl"></i> Help
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-cog mr-4 text-xl"></i> Settings
+                        </a>
+                    </li>
+                    <li class="mt-8">
+                        <a href="#" class="flex items-center p-3 rounded-xl text-gray-400 hover:bg-gray-700">
+                            <i class="fas fa-sign-out-alt mr-4 text-xl"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col bg-gray-800 overflow-hidden">
+            <header class="bg-gray-800 p-6 flex items-center justify-between shadow-sm border-b border-gray-700">
+                <h1 class="text-3xl font-bold text-gray-50">Orders</h1>
+                <div class="flex items-center space-x-6">
+                    <button class="p-2 rounded-full hover:bg-gray-700 text-gray-400">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-700 text-gray-400">
+                        <i class="fas fa-bell text-xl"></i>
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-right">
+                            <p class="font-semibold text-gray-50">Kristina Evans</p>
+                            <p class="text-sm text-gray-400">kristieva@gmail.com</p>
+                        </div>
+                        <img src="https://via.placeholder.com/40x40/4b5563/d1d5db" alt="User Avatar" class="w-10 h-10 rounded-full border border-gray-600">
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex-1 flex overflow-hidden">
+                <section class="flex-1 p-6 overflow-y-auto custom-scrollbar bg-gray-900"> <div class="flex items-center space-x-4 mb-6">
+                        <div class="relative">
+                            <select class="block appearance-none w-full bg-gray-800 border border-gray-700 text-gray-300 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <option>Any status</option>
+                                <option>Paid</option>
+                                <option>Delivered</option>
+                                <option>Completed</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <select class="block appearance-none w-full bg-gray-800 border border-gray-700 text-gray-300 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <option>$100 - $1500</option>
+                                <option>$1500 - $3000</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="relative ml-auto">
+                            <select class="block appearance-none w-full bg-gray-800 border border-gray-700 text-gray-300 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <option>Sort by Date</option>
+                                <option>Sort by Amount</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-700">
+                        <table class="min-w-full divide-y divide-gray-700">
+                            <thead class="bg-gray-700">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-600 border-gray-500 transition duration-150 ease-in-out">
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Order</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Customer</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Total</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-gray-800 divide-y divide-gray-700">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#390561</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=MB" alt="Michelle Black">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Michelle Black</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$780.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Jan 8</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#663334</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=JC" alt="Janice Chandler">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Janice Chandler</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-delivered">Delivered</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$1,250.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Jan 6</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#418135</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=MH" alt="Mildred Hill">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Mildred Hall</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$540.95</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Jan 5</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#801999</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=AC" alt="Ana Carter">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Ana Carter</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$1,489.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Jan 2</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" checked class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#517783</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=JS" alt="John Sherman">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">John Sherman</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-completed">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$925.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 28</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-700">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" checked class="form-checkbox h-4 w-4 text-blue-500 bg-gray-600 border-gray-500 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#602992</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=JM" alt="James Miller">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">James Miller</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$1,620.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 26</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#730345</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=TF" alt="Travis French">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Travis French</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$315.50</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 22</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#128955</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=RH" alt="Ralph Hall">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Ralph Hall</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$1,267.45</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 20</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#045321</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=GG" alt="Gary Gilbert">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Gary Gilbert</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-completed">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$287.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 18</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#082848</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=FH" alt="Frances Howell">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Frances Howell</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-delivered">Delivered</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$1,740.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 17</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#646072</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=HB" alt="Herbert Boyd">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Herbert Boyd</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$714.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 14</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#432019</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=AW" alt="Alan White">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Alan White</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-paid">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$267.65</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 13</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-500 bg-gray-700 border-gray-600 transition duration-150 ease-in-out">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">#985027</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-8 w-8">
+                                                <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/32x32/6b7280/e5e7eb?text=JM" alt="Julie Martin">
+                                            </div>
+                                            <div class="ml-4 text-sm font-medium text-gray-100">Julie Martin</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="status-tag status-delivered">Delivered</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">$389.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Dec 11</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <i class="fas fa-ellipsis-h text-gray-500 hover:text-gray-300 cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <aside class="w-96 bg-gray-800 flex-shrink-0 p-6 overflow-y-auto custom-scrollbar shadow-lg border-l border-gray-700">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-50">Order #390561</h2>
+                        <button class="p-1 rounded-full hover:bg-gray-700 text-gray-400">
+                            <i class="fas fa-times text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="mb-6 pb-6 right-sidebar-top-border">
+                        <span class="status-tag status-paid text-xs">Paid</span>
+                        <p class="text-gray-400 text-sm mt-1">Jan 8, 13:52</p>
+                    </div>
+
+                    <div class="flex items-center mb-6">
+                        <img src="https://via.placeholder.com/64x64/4b5563/d1d5db?text=JM" alt="James Miller" class="w-16 h-16 rounded-full mr-4 border border-gray-600">
+                        <div>
+                            <p class="text-lg font-semibold text-gray-50">James Miller</p>
+                            <p class="text-gray-400 text-sm">jamesmiller@email.com</p>
+                            <div class="flex space-x-2 mt-1">
+                                <button class="text-blue-500 hover:text-blue-400"><i class="fas fa-envelope"></i></button>
+                                <button class="text-green-500 hover:text-green-400"><i class="fas fa-phone"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-4 text-gray-50">Order items</h3>
+                    <div class="space-y-4 mb-6 pb-6 right-sidebar-top-border">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-700 rounded-md flex-shrink-0 mr-3 flex items-center justify-center">
+                                    <i class="fas fa-cube text-gray-400"></i> </div>
+                                <div>
+                                    <p class="font-medium text-gray-100">Kyobi ONE drill/driver</p>
+                                    <p class="text-sm text-gray-400">x 1</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-100">$409.00</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-700 rounded-md flex-shrink-0 mr-3 flex items-center justify-center">
+                                    <i class="fas fa-microchip text-gray-400"></i> </div>
+                                <div>
+                                    <p class="font-medium text-gray-100">Socket Systeme Electric</p>
+                                    <p class="text-sm text-gray-400">x 1</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-100">$238.00</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-700 rounded-md flex-shrink-0 mr-3 flex items-center justify-center">
+                                    <i class="fas fa-tv text-gray-400"></i> </div>
+                                <div>
+                                    <p class="font-medium text-gray-100">DVB-T2 receiver bkk</p>
+                                    <p class="text-sm text-gray-400">x 1</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-100">$139.00</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-700 rounded-md flex-shrink-0 mr-3 flex items-center justify-center">
+                                    <i class="fas fa-oil-can text-gray-400"></i> </div>
+                                <div>
+                                    <p class="font-medium text-gray-100">Inforce oil-free compressor</p>
+                                    <p class="text-sm text-gray-400">x 1</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-100">$135.00</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-700 rounded-md flex-shrink-0 mr-3 flex items-center justify-center">
+                                    <i class="fas fa-wrench text-gray-400"></i> </div>
+                                <div>
+                                    <p class="font-medium text-gray-100">TIG-200 welding inverter</p>
+                                    <p class="text-sm text-gray-400">x 1</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-100">$699.00</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-6">
+                        <p class="text-lg font-bold text-gray-50">Total</p>
+                        <p class="text-lg font-bold text-gray-50">$1,620.00</p>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button class="flex-1 bg-gray-700 text-gray-300 hover:bg-gray-600 py-3 rounded-lg font-semibold flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Track
+                        </button>
+                        <button class="flex-1 bg-yellow-500 text-yellow-900 hover:bg-yellow-600 py-3 rounded-lg font-semibold flex items-center justify-center">
+                            Refund <i class="fas fa-undo ml-2"></i>
+                        </button>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
