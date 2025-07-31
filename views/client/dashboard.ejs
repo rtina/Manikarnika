@@ -1,115 +1,975 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dark Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  </head>
-  <body class="bg-black text-white">
-    <section class="min-h-screen bg-[#0f172a] text-white flex">
-      <!-- Sidebar -->
-      <aside class="w-64 bg-[#111827] p-6 flex flex-col gap-6 border-r border-[#1f2937]">
-        
-       <a href="/" class="flex items-center gap-2"> <img src="images/img2.png" alt="Logo" class="w-10 h-10" /><span class="text-xl font-bold text-indigo-300">ManikarnikaStudio</span></a>
-        <div class="flex items-center gap-4">
-          <img src="https://i.pravatar.cc/40" class="rounded-full w-10 h-10" alt="User" />
-          <div>
-            <p class="text-sm font-semibold">Allen Clerk</p>
-            <p class="text-xs text-gray-400">$3,400.00</p>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Dashboard - Manikarnika Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="transition duration-300 ease-in-out bg-gray-100 text-gray-800" id="mainBody">
+<script>
+  function toggleMode() {
+  const body = document.getElementById('mainBody');
+  const sidebar = document.getElementById('sidebar');
+  body.classList.toggle('bg-white');
+  body.classList.toggle('bg-gray-900');
+  sidebar.classList.toggle('bg-blue-900');
+  sidebar.classList.toggle('bg-white');
+}
+</script>
+  <section class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-72 p-6 flex flex-col gap-6 bg-blue-400 text-white shadow-lg">
+      <a href="#" class="flex items-center gap-2">
+        <img src="images/img2.png" alt="Logo" class="w-10 h-10 animate-bounce" />
+        <span class="text-xl font-bold text-blue-800">ManikarnikaStudio</span>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <img src="https://i.pravatar.cc/40" class="rounded-full w-10 h-10" alt="User" />
+        <div>
+          <p class="text-sm font-semibold">Allen Clerk</p>
+          <p class="text-xs text-gray-500">Client</p>
         </div>
-        <nav class="flex-1">
-          <ul class="space-y-3 text-sm">
-            <li><a href="#" class="block px-2 py-1 rounded bg-blue-600">Dashboard</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Payment History</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">My projects</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Forms</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Advanced Tables</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Charts</a></li>
-            <li><a href="#" class="block px-2 py-1 rounded hover:bg-[#1f2937]">Icons</a></li>
-          </ul>
-        </nav>
-        <button class="bg-gray-800 p-3 rounded text-white text-sm flex items-center justify-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-          </svg>
-          Create New Board
-        </button>
-      </aside>
+      </div>
 
-      <!-- Main Content -->
-      <main class="flex-1 p-6 space-y-6">
-        <!-- Header -->
-        <div class="flex justify-between items-center">
-          <h1 class="text-2xl font-semibold">Dashboard</h1>
-          <input
-            type="text"
-            placeholder="Search..."
-            class="bg-[#1e293b] text-sm text-white px-4 py-2 rounded focus:outline-none"
-          />
-        </div>
+      <nav class="flex-1">
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" onclick="showSection('home')" class="block px-2 py-1 rounded hover:bg-gray-700">Home</a></li>
+          <li><a href="#" onclick="showSection('service')" class="block px-2 py-1 rounded hover:bg-gray-700">Service Request</a></li>
+          <li><a href="#" onclick="showSection('projects')" class="block px-2 py-1 rounded hover:bg-gray-700">Projects / Milestones</a></li>
+          <li><a href="#" onclick="showSection('files')" class="block px-2 py-1 rounded hover:bg-gray-700">Files / Deliverables</a></li>
+          <li><a href="#" onclick="showSection('feedback')" class="block px-2 py-1 rounded hover:bg-gray-700">Feedback & Approvals</a></li>
+          <li><a href="#" onclick="showSection('chat')" class="block px-2 py-1 rounded hover:bg-gray-700">Messages / Chat</a></li>
+          <li><a href="#" onclick="showSection('video')" class="block px-2 py-1 rounded hover:bg-gray-700">Video Calls</a></li>
+          <li><a href="#" onclick="showSection('payment')" class="block px-2 py-1 rounded hover:bg-gray-700">Payment & Invoices</a></li>
+          <li><a href="#" onclick="showSection('profile')" class="block px-2 py-1 rounded hover:bg-gray-700">Profile & Settings</a></li>
+          <li><a href="#" onclick="showSection('notifications')" class="block px-2 py-1 rounded hover:bg-gray-700">Notifications</a></li>
+          <li><a href="#" onclick="showSection('support')" class="block px-2 py-1 rounded hover:bg-gray-700">Support / Helpdesk</a></li>
+          <li><a href="#" onclick="showSection('resources')" class="block px-2 py-1 rounded hover:bg-gray-700">Resources</a></li>
+        </ul>
+      </nav>
+    </aside>
+<script>
+  function showSection(sectionId) {
+    const allSections = document.querySelectorAll('main > div[id]');
+    allSections.forEach(section => section.classList.add('hidden'));
+    
+    const target = document.getElementById(sectionId);
+    if (target) {
+      target.classList.remove('hidden');
+    }
+  }
+</script>
 
-        <!-- Cards Row -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Traffic</p>
-            <p class="text-xl font-semibold">30%</p>
-            <p class="text-xs text-green-400">+6.2%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Conversion</p>
-            <p class="text-xl font-semibold">43%</p>
-            <p class="text-xs text-green-400">+11.75%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Bounce Rate</p>
-            <p class="text-xl font-semibold">23%</p>
-            <p class="text-xs text-green-400">+2.7%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Marketing</p>
-            <p class="text-xl font-semibold">78%</p>
-            <p class="text-xs text-red-400">-5.34%</p>
-          </div>
-          <div class="bg-[#1e293b] p-4 rounded shadow">
-            <p class="text-sm">Followers</p>
-            <p class="text-xl font-semibold">16.2K</p>
-            <p class="text-xs text-green-400">+3.2K</p>
-          </div>
-        </div>
 
-        <!-- Middle Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <!-- Chart Placeholder -->
-          <div class="bg-[#1e293b] p-6 rounded shadow col-span-2">
-            <h2 class="text-sm font-semibold mb-2">Followers Growth</h2>
-            <div class="h-40 bg-[#0f172a] rounded"></div>
-          </div>
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-6 transition-colors duration-300 ease-in-out bg-gray-50" id="contentArea">
 
-          <!-- Campaign Progress -->
-          <div class="bg-[#1e293b] p-6 rounded shadow">
-            <h2 class="text-sm font-semibold mb-2">Campaign</h2>
-            <div class="flex flex-col items-center">
-              <div class="w-24 h-24 bg-[#0f172a] rounded-full mb-4 flex items-center justify-center text-lg font-bold">
-                67%
-              </div>
-              <p class="text-sm text-center">
-                $23,350.00<br />
-                <span class="text-gray-400 text-xs">Used balance this billing cycle</span>
-              </p>
+      <!-- Header -->
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-semibold">Welcome, Allen</h1>
+        <div class="flex gap-4 items-center">
+          <input type="text" placeholder="Search projects..." class="text-sm px-4 py-2 rounded bg-white border border-gray-300 focus:outline-none" />
+          <div class="relative group">
+            <button class="focus:outline-none transition-transform duration-200 transform hover:rotate-12">⚙️</button>
+            <div class="absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg p-2 text-sm hidden group-hover:block">
+              
+              <a href="#" class="block px-2 py-1 hover:bg-gray-100 rounded">Logout</a>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Table Placeholder -->
-        <div class="bg-[#1e293b] p-6 rounded shadow">
-          <h2 class="text-sm font-semibold mb-4">Available Balance</h2>
-          <p class="text-3xl font-mono">26.00453100 <span class="text-yellow-400">BTC</span></p>
+      <!-- Sections -->
+      <div id="home" class="space-y-8 animate-fade-in">
+        <!-- Overview Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-blue-300 text-gray p-4 rounded-lg shadow hover:scale-105 transform transition">
+            <h3 class="text-lg font-semibold">Active Projects</h3>
+            <p class="text-sm mt-2">4 Ongoing Projects</p>
+          </div>
+          <div class="bg-green-400 text-gray p-4 rounded-lg shadow hover:scale-105 transform transition">
+            <h3 class="text-lg font-semibold">Recent Payments</h3>
+            <p class="text-sm mt-2">₹12,000 received</p>
+          </div>
+          <div class="bg-yellow-200 text-gray p-4 rounded-lg shadow hover:scale-105 transform transition">
+            <h3 class="text-lg font-semibold">Deadlines</h3>
+            <p class="text-sm mt-2">2 tasks due this week</p>
+          </div>
+          <div class="bg-purple-300 text-gray p-4 rounded-lg shadow hover:scale-105 transform transition">
+            <h3 class="text-lg font-semibold">Unread Messages</h3>
+            <p class="text-sm mt-2">2 new messages</p>
+          </div>
         </div>
+
+        <!-- Service Category Tiles -->
+         <div>
+    <h2 class="text-xl font-bold mb-4">Service Categories</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white text-blue-800 p-4 rounded-lg shadow hover:bg-blue-100 transition cursor-pointer">2D Animation</div>
+      <div class="bg-white text-blue-800 p-4 rounded-lg shadow hover:bg-blue-100 transition cursor-pointer">3D Modeling</div>
+      <div class="bg-white text-blue-800 p-4 rounded-lg shadow hover:bg-blue-100 transition cursor-pointer">VFX</div>
+      <div class="bg-white text-blue-800 p-4 rounded-lg shadow hover:bg-blue-100 transition cursor-pointer">Game Design</div>
+    </div>
+  </div>
+
+  <!-- Artist Highlights Carousel -->
+  <div>
+    <h2 class="text-xl font-bold mb-4">Artist Highlights</h2>
+    <div class="flex overflow-x-auto space-x-4 pb-2">
+      <div class="min-w-[200px] bg-gradient-to-br from-yellow-300 to-orange-500 text-white rounded-lg p-4 shadow-md flex-shrink-0 hover:scale-105 transition transform">
+        <img src="https://i.pravatar.cc/100?img=1" class="rounded-full w-16 h-16 mb-2" alt="Artist 1" />
+        <p class="font-semibold">Aarav Sharma</p>
+        <p class="text-sm">3D Artist</p>
+      </div>
+      <div class="min-w-[200px] bg-gradient-to-br from-pink-300 to-pink-600 text-white rounded-lg p-4 shadow-md flex-shrink-0 hover:scale-105 transition transform">
+        <img src="https://i.pravatar.cc/100?img=2" class="rounded-full w-16 h-16 mb-2" alt="Artist 2" />
+        <p class="font-semibold">Maya Kapoor</p>
+        <p class="text-sm">VFX Designer</p>
+      </div>
+      <div class="min-w-[200px] bg-gradient-to-br from-gray-600 to-gray-800 text-white rounded-lg p-4 shadow-md flex-shrink-0 hover:scale-105 transition transform">
+        <img src="https://i.pravatar.cc/100?img=3" class="rounded-full w-16 h-16 mb-2" alt="Artist 3" />
+        <p class="font-semibold">Rahul Dev</p>
+        <p class="text-sm">2D Animator</p>
+      </div>
+      <div class="min-w-[200px] bg-gradient-to-br from-blue-300 to-indigo-400 text-white rounded-lg p-4 shadow-md flex-shrink-0 hover:scale-105 transition transform">
+        <img src="https://i.pravatar.cc/100?img=4" class="rounded-full w-16 h-16 mb-2" alt="Artist 4" />
+        <p class="font-semibold">Sneha Jain</p>
+        <p class="text-sm">Game Artist</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Service Request Section -->
+<div id="service" class="hidden animate-fade-in">
+  <h2 class="text-2xl font-semibold">Submit New Service Request</h2>
+
+  <!-- Service Request Form -->
+  <form class="grid gap-6 md:grid-cols-2 bg-white p-6 rounded-lg shadow">
+    <div class="col-span-2">
+      <label class="block text-sm font-medium mb-1">Service Type</label>
+      <select class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">Select service</option>
+        <option>2D Animation</option>
+        <option>3D Modeling</option>
+        <option>VFX</option>
+        <option>Game Design</option>
+      </select>
+    </div>
+
+    <div class="col-span-2">
+      <label class="block text-sm font-medium mb-1">Brief Description</label>
+      <textarea rows="3" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe your project..."></textarea>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Upload Reference File</label>
+      <input type="file" class="w-full border rounded px-3 py-2 bg-white" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Budget (₹)</label>
+      <input type="number" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="10000" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Deadline</label>
+      <input type="date" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+
+    <div class="col-span-2">
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Submit Request</button>
+    </div>
+  </form>
+
+  <!-- Past Submitted Requests -->
+  <div>
+    <h3 class="text-xl font-semibold mb-4">Submitted Requests</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left border-collapse rounded-lg shadow bg-white">
+        <thead class="bg-blue-50 text-blue-800">
+          <tr>
+            <th class="px-4 py-3 border-b">Date</th>
+            <th class="px-4 py-3 border-b">Service Type</th>
+            <th class="px-4 py-3 border-b">Budget</th>
+            <th class="px-4 py-3 border-b">Deadline</th>
+            <th class="px-4 py-3 border-b">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-2 border-b">2025-07-29</td>
+            <td class="px-4 py-2 border-b">3D Modeling</td>
+            <td class="px-4 py-2 border-b">₹15,000</td>
+            <td class="px-4 py-2 border-b">2025-08-10</td>
+            <td class="px-4 py-2 border-b text-green-600 font-medium">In Progress</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-2 border-b">2025-07-25</td>
+            <td class="px-4 py-2 border-b">VFX</td>
+            <td class="px-4 py-2 border-b">₹8,000</td>
+            <td class="px-4 py-2 border-b">2025-08-01</td>
+            <td class="px-4 py-2 border-b text-yellow-600 font-medium">Pending Review</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-2 border-b">2025-07-18</td>
+            <td class="px-4 py-2 border-b">2D Animation</td>
+            <td class="px-4 py-2 border-b">₹6,000</td>
+            <td class="px-4 py-2 border-b">2025-07-28</td>
+            <td class="px-4 py-2 border-b text-blue-600 font-medium">Completed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Projects / Milestones Section -->
+<div id="projects" class="hidden animate-fade-in space-y-6">
+  <h2 class="text-2xl font-semibold mb-4">Projects / Milestones</h2>
+
+  <!-- Project Timeline Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white p-4 rounded-lg shadow border-l-4 border-blue-600">
+      <h3 class="font-semibold text-blue-800">To-do</h3>
+      <ul class="list-disc list-inside text-sm mt-2">
+        <li>Client Brief Review</li>
+        <li>Scriptwriting Stage</li>
+      </ul>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow border-l-4 border-yellow-500">
+      <h3 class="font-semibold text-yellow-700">In-progress</h3>
+      <ul class="list-disc list-inside text-sm mt-2">
+        <li>Character Modeling - 3D</li>
+        <li>Background Compositing</li>
+      </ul>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow border-l-4 border-purple-600">
+      <h3 class="font-semibold text-purple-700">Review</h3>
+      <ul class="list-disc list-inside text-sm mt-2">
+        <li>Initial VFX Draft</li>
+        <li>Client Comments Pending</li>
+      </ul>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow border-l-4 border-green-600">
+      <h3 class="font-semibold text-green-700">Done</h3>
+      <ul class="list-disc list-inside text-sm mt-2">
+        <li>Storyboard Approved</li>
+        <li>Reference Upload Complete</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Milestone Tracker -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-lg font-semibold text-blue-900 mb-4">Milestone Completion</h3>
+    <div class="space-y-3">
+      <div>
+        <p class="text-sm font-medium">Scriptwriting</p>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div class="bg-blue-600 h-2.5 rounded-full w-[80%]"></div>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-medium">Storyboard</p>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div class="bg-yellow-500 h-2.5 rounded-full w-[60%]"></div>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-medium">Modeling</p>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div class="bg-green-600 h-2.5 rounded-full w-[30%]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attachments -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-lg font-semibold text-blue-900 mb-4">Project Files</h3>
+    <ul class="list-disc list-inside text-sm space-y-2">
+      <li><a href="#" class="text-blue-700 underline">Storyboard_v1.pdf</a></li>
+      <li><a href="#" class="text-blue-700 underline">character_design.png</a></li>
+      <li><a href="#" class="text-blue-700 underline">vfx_test_scene.mp4</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- Files / Deliverables Section -->
+<div id="files" class="hidden animate-fade-in space-y-6">
+  <h2 class="text-2xl font-semibold mb-4">Files & Deliverables</h2>
+
+  <!-- Upload Center -->
+  <div class="bg-white p-6 rounded-lg shadow space-y-4">
+    <h3 class="text-lg font-semibold text-blue-900">Upload New File</h3>
+    <form class="space-y-3">
+      <input type="file" class="block w-full border border-gray-300 p-2 rounded" />
+      <textarea placeholder="Add comment or feedback (optional)" rows="3" class="w-full p-2 border border-gray-300 rounded"></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Upload</button>
+    </form>
+  </div>
+
+  <!-- File List with Feedback -->
+  <div class="bg-white p-6 rounded-lg shadow space-y-4">
+    <h3 class="text-lg font-semibold text-blue-900">Uploaded Files</h3>
+    
+    <div class="space-y-3">
+      <!-- File 1 -->
+      <div class="border border-gray-200 rounded p-4 shadow-sm hover:bg-gray-50 transition">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium">CharacterSketch_v2.jpg</p>
+            <p class="text-sm text-gray-500">Uploaded: July 20, 2025</p>
+          </div>
+          <a href="#" class="text-blue-700 underline">Download</a>
+        </div>
+        <div class="mt-2 text-sm text-gray-600">
+          💬 <span class="font-semibold">Client:</span> Please refine the hair texture
+        </div>
+        <div class="mt-1 text-sm text-gray-500 italic">Version: v2 | Last updated: July 22</div>
+      </div>
+
+      <!-- File 2 -->
+      <div class="border border-gray-200 rounded p-4 shadow-sm hover:bg-gray-50 transition">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium">SceneBackground_Final.psd</p>
+            <p class="text-sm text-gray-500">Uploaded: July 18, 2025</p>
+          </div>
+          <a href="#" class="text-blue-700 underline">Download</a>
+        </div>
+        <div class="mt-2 text-sm text-gray-600">
+          ✅ Approved by client
+        </div>
+        <div class="mt-1 text-sm text-gray-500 italic">Version: Final | Reviewed: July 19</div>
+      </div>
+
+      <!-- File 3 -->
+      <div class="border border-gray-200 rounded p-4 shadow-sm hover:bg-gray-50 transition">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="font-medium">Storyboard_v1.pdf</p>
+            <p class="text-sm text-gray-500">Uploaded: July 15, 2025</p>
+          </div>
+          <a href="#" class="text-blue-700 underline">Download</a>
+        </div>
+        <div class="mt-2 text-sm text-gray-600">
+          💬 <span class="font-semibold">Team:</span> Please check the transitions on page 3
+        </div>
+        <div class="mt-1 text-sm text-gray-500 italic">Version: v1 | Reviewed: July 16</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Feedback & Approvals Section -->
+<div id="feedback" class="hidden animate-fade-in space-y-6">
+  <h2 class="text-2xl font-semibold mb-4">Feedback & Approvals</h2>
+
+  <!-- Pending Approvals -->
+  <div class="bg-white p-6 rounded-lg shadow space-y-4">
+    <h3 class="text-lg font-semibold text-red-600">Pending Approvals</h3>
+
+    <div class="space-y-3">
+      <div class="border border-gray-300 p-4 rounded hover:shadow-md transition">
+        <div class="flex justify-between">
+          <p><strong>File:</strong> CharacterModel_v3.glb</p>
+          <span class="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Awaiting Approval</span>
+        </div>
+        <p class="text-sm text-gray-600 mt-1">Submitted on: July 25, 2025</p>
+        <button class="mt-2 px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm">Approve</button>
+        <button class="mt-2 ml-2 px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm">Request Revisions</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Approval History -->
+  <div class="bg-white p-6 rounded-lg shadow space-y-4">
+    <h3 class="text-lg font-semibold text-green-700">Approval History</h3>
+
+    <div class="space-y-3">
+      <div class="border border-gray-200 p-4 rounded hover:shadow-sm transition">
+        <p><strong>File:</strong> LogoAnimation_v1.mp4</p>
+        <p class="text-sm text-gray-600">Approved on: July 20, 2025 by Client</p>
+        <p class="text-sm italic text-gray-500 mt-1">"Looks great! Ready for final render."</p>
+      </div>
+      <div class="border border-gray-200 p-4 rounded hover:shadow-sm transition">
+        <p><strong>File:</strong> BackgroundScene_v2.jpg</p>
+        <p class="text-sm text-gray-600">Approved on: July 18, 2025 by Client</p>
+        <p class="text-sm italic text-gray-500 mt-1">"Perfect lighting and colors."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comment Threads -->
+  <div class="bg-white p-6 rounded-lg shadow space-y-4">
+    <h3 class="text-lg font-semibold text-blue-800">Revision Comments</h3>
+
+    <div class="space-y-3">
+      <!-- Thread 1 -->
+      <div class="border border-blue-100 p-4 rounded hover:bg-blue-50 transition">
+        <p><strong>File:</strong> AnimationScene_v1.mp4</p>
+        <p class="text-sm text-gray-700 mt-1">💬 <strong>Client:</strong> Please adjust camera angle between 00:12 and 00:15</p>
+        <p class="text-xs text-gray-500">Date: July 23, 2025</p>
+      </div>
+
+      <!-- Thread 2 -->
+      <div class="border border-blue-100 p-4 rounded hover:bg-blue-50 transition">
+        <p><strong>File:</strong> CharacterRig_v2.blend</p>
+        <p class="text-sm text-gray-700 mt-1">💬 <strong>Team:</strong> Noted. Will update mouth movement speed and send next version.</p>
+        <p class="text-xs text-gray-500">Date: July 22, 2025</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Messages / Chat Section -->
+<div id="chat" class="animate-fade-in grid grid-cols-1 md:grid-cols-3 gap-4">
+  <!-- Contacted Users Panel -->
+  <div class="bg-white rounded-lg shadow-md p-4 col-span-1">
+    <h2 class="text-lg font-bold text-gray-800 mb-4">Recent Contacts</h2>
+    <ul class="space-y-3 text-sm">
+      <li onclick="loadChat('sneha')" class="cursor-pointer flex justify-between items-center hover:bg-gray-100 p-2 rounded transition">
+        <span class="font-medium text-blue-700">Sneha Jain</span>
+        <span class="text-xs text-gray-400">3:42 PM</span>
+      </li>
+      <li onclick="loadChat('rahul')" class="cursor-pointer flex justify-between items-center hover:bg-gray-100 p-2 rounded transition">
+        <span class="font-medium text-blue-700">Rahul Dev</span>
+        <span class="text-xs text-gray-400">12:10 PM</span>
+      </li>
+      <li onclick="loadChat('maya')" class="cursor-pointer flex justify-between items-center hover:bg-gray-100 p-2 rounded transition">
+        <span class="font-medium text-blue-700">Maya Kapoor</span>
+        <span class="text-xs text-gray-400">Yesterday</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Chat Window -->
+  <div class="bg-white col-span-2 rounded-lg shadow-md p-4 flex flex-col">
+    <div id="chatHeader" class="font-bold text-blue-800 mb-2">Chat with [Select a Contact]</div>
+    <div id="chatHistory" class="flex-1 overflow-y-auto space-y-2 p-2 border border-gray-200 rounded mb-4 bg-gray-50 h-64">
+      <!-- Messages will be dynamically injected here -->
+    </div>
+
+    <div class="flex items-center gap-2">
+      <input type="text" id="messageInput" placeholder="Type a message..." class="flex-1 border rounded p-2 text-sm" />
+      <button onclick="sendMessage()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Send</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const chatData = {
+    sneha: [
+      { from: "client", text: "Hello Sneha!", time: "3:40 PM" },
+      { from: "sneha", text: "Hi! How can I help you?", time: "3:41 PM" }
+    ],
+    rahul: [
+      { from: "rahul", text: "Draft has been uploaded.", time: "12:00 PM" },
+      { from: "client", text: "Received. Will check.", time: "12:10 PM" }
+    ],
+    maya: [
+      { from: "maya", text: "Can we connect tomorrow?", time: "Yesterday" }
+    ]
+  };
+
+  let currentChat = null;
+
+  function loadChat(name) {
+    currentChat = name;
+    document.getElementById("chatHeader").innerText = `Chat with ${name.charAt(0).toUpperCase() + name.slice(1)}`;
+    const historyDiv = document.getElementById("chatHistory");
+    historyDiv.innerHTML = "";
+
+    chatData[name].forEach(msg => {
+      const bubble = document.createElement("div");
+      bubble.className = `p-2 rounded max-w-xs ${msg.from === "client" ? 'bg-blue-200 self-end text-right' : 'bg-gray-200 text-left'}`;
+      bubble.innerHTML = `<p class="text-sm">${msg.text}</p><p class="text-xs text-gray-500 mt-1">${msg.time}</p>`;
+      historyDiv.appendChild(bubble);
+    });
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("messageInput");
+    if (!input.value.trim() || !currentChat) return;
+
+    const newMessage = {
+      from: "client",
+      text: input.value.trim(),
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+
+    chatData[currentChat].push(newMessage);
+    loadChat(currentChat);
+    input.value = "";
+  }
+</script>
+
+
+
+<!-- Video Calls Tab -->
+<div id="video" class="hidden animate-fade-in space-y-6">
+  <!-- Heading -->
+  <h2 class="text-2xl font-bold text-blue-800 mb-4">Video Meetings</h2>
+
+  <!-- Action Buttons -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Create Meeting -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="text-lg font-semibold text-blue-700 mb-2">Create a New Meeting</h3>
+      <button onclick="generateMeetingLink()" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+        Generate Meeting Link
+      </button>
+      <div id="generatedLink" class="mt-4 text-sm text-gray-700"></div>
+    </div>
+
+    <!-- Join Meeting -->
+    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="text-lg font-semibold text-blue-700 mb-2">Join with a Meeting Code</h3>
+      <input id="joinCode" type="text" placeholder="Enter Meeting Code" class="w-full border px-3 py-2 rounded mt-2" />
+      <button onclick="joinMeeting()" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">
+        Join Meeting
+      </button>
+    </div>
+  </div>
+
+  <!-- Meeting History -->
+  <div class="bg-white p-6 rounded-lg shadow mt-6">
+    <h3 class="text-lg font-semibold text-blue-700 mb-4">Previous Meetings</h3>
+    <ul class="space-y-2 text-sm text-gray-800">
+      <li class="border-b py-2">📅 28 July 2025 - <span class="text-blue-600 underline cursor-pointer">Join again</span></li>
+      <li class="border-b py-2">📅 25 July 2025 - Recording Available - <span class="text-green-600 underline cursor-pointer">Watch</span></li>
+      <li class="border-b py-2">📅 21 July 2025 - No recording</li>
+    </ul>
+  </div>
+
+  <!-- ✅ Recorded Calls Section -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-4">Recorded Calls</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Recording Card 1 -->
+      <div class="border rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition">
+        <h4 class="font-semibold text-blue-800">Client Review Call</h4>
+        <p class="text-sm text-gray-600 mb-2">🗓 25 July 2025</p>
+        <button class="text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 transition">
+          ▶️ Watch Recording
+        </button>
+      </div>
+
+      <!-- Recording Card 2 -->
+      <div class="border rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition">
+        <h4 class="font-semibold text-blue-800">Animation Approval</h4>
+        <p class="text-sm text-gray-600 mb-2">🗓 18 July 2025</p>
+        <button class="text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 transition">
+          ▶️ Watch Recording
+        </button>
+      </div>
+
+      <!-- Recording Card 3 -->
+      <div class="border rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition">
+        <h4 class="font-semibold text-blue-800">Kickoff Meeting</h4>
+        <p class="text-sm text-gray-600 mb-2">🗓 10 July 2025</p>
+        <button class="text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 transition">
+          ▶️ Watch Recording
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function generateMeetingLink() {
+  const randomCode = Math.random().toString(36).substring(2, 10);
+  const link = `https://meet.manikarnikastudio.com/${randomCode}`;
+  const linkContainer = document.getElementById('generatedLink');
+  linkContainer.innerHTML = `
+    <p>🔗 Your meeting link:</p>
+    <a href="${link}" target="_blank" class="text-blue-600 underline break-words">${link}</a>
+    <p class="text-xs text-gray-500 mt-1">Share this link with participants</p>
+  `;
+}
+
+function joinMeeting() {
+  const code = document.getElementById('joinCode').value.trim();
+  if (code) {
+    const url = `https://meet.manikarnikastudio.com/${code}`;
+    window.open(url, '_blank');
+  } else {
+    alert("Please enter a meeting code.");
+  }
+}
+</script>
+
+
+<!-- Payment & Invoices Section -->
+<div id="payment" class="hidden animate-fade-in space-y-10">
+
+  <!-- Final Review Confirmation -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition" id="reviewSection">
+    <h3 class="text-lg font-semibold text-blue-800 mb-2">Final Review Confirmation</h3>
+    <p class="text-sm text-gray-600 mb-4">Once you’ve reviewed and approved the final deliverables, you can proceed to payment.</p>
+    <button onclick="approveAndShowQR()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Mark as Reviewed</button>
+  </div>
+
+  <!-- UPI QR Payment -->
+  <div id="qrPaymentSection" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6 rounded-lg shadow hover:shadow-lg transition">
+    <h3 class="text-lg font-bold mb-2">Scan to Pay</h3>
+    <p class="text-sm mb-4">Use any UPI app (PhonePe, GPay, Paytm) to transfer to the assigned artist</p>
+    <div class="flex items-center justify-between gap-6 flex-wrap">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=artist@upi&pn=Manikarnika%20Studio&am=5000" alt="UPI QR" class="w-36 h-36 rounded border-4 border-white shadow-md" />
+      <div class="space-y-2">
+        <p><strong>UPI ID:</strong> <span class="text-indigo-200">artist@upi</span></p>
+        <p><strong>Amount:</strong> ₹5,000</p>
+        <p><strong>Note:</strong> Final Animation Delivery</p>
+        <button class="mt-2 px-4 py-2 bg-white text-blue-700 font-semibold rounded shadow hover:bg-gray-200 transition">Copy UPI ID</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment History -->
+<div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+  <h3 class="text-lg font-semibold text-blue-800 mb-4">Payment History</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+
+    <!-- Paid -->
+    <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-medium text-gray-800">2D Animation Intro</p>
+          <p class="text-sm text-gray-500">📅 14 July 2025</p>
+        </div>
+        <span class="text-green-600 font-semibold">✅ Paid</span>
+      </div>
+      <div class="mt-3 flex justify-between items-center">
+        <p class="text-lg font-semibold text-gray-900">₹3,000</p>
+        <a href="invoices/invoice-2d-animation.pdf" download class="text-sm text-blue-600 hover:underline">
+          ⬇️ Download Invoice
+        </a>
+      </div>
+    </div>
+
+    <!-- Pending -->
+    <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-medium text-gray-800">Game Art Assets</p>
+          <p class="text-sm text-gray-500">📅 20 July 2025</p>
+        </div>
+        <span class="text-yellow-600 font-semibold">⏳ Pending</span>
+      </div>
+      <div class="mt-3 flex justify-between items-center">
+        <p class="text-lg font-semibold text-gray-900">₹5,000</p>
+        <a href="invoices/invoice-game-art.pdf" download class="text-sm text-blue-600 hover:underline">
+          ⬇️ Download Invoice
+        </a>
+      </div>
+    </div>
+
+    <!-- Paid -->
+    <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="font-medium text-gray-800">VFX Post Processing</p>
+          <p class="text-sm text-gray-500">📅 01 July 2025</p>
+        </div>
+        <span class="text-green-600 font-semibold">✅ Paid</span>
+      </div>
+      <div class="mt-3 flex justify-between items-center">
+        <p class="text-lg font-semibold text-gray-900">₹4,200</p>
+        <a href="invoices/invoice-vfx.pdf" download class="text-sm text-blue-600 hover:underline">
+          ⬇️ Download Invoice
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+ <!-- Payment Analytics (Smaller Cards) -->
+<div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+  <h3 class="text-lg font-semibold text-blue-800 mb-4">Payment Analytics</h3>
+
+  <!-- Summary Cards -->
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="bg-blue-100 text-blue-900 p-3 rounded-lg text-center">
+      <h4 class="font-medium text-sm">Total Paid This Month</h4>
+      <p class="text-xl mt-1 font-bold">₹15,000</p>
+    </div>
+    <div class="bg-yellow-100 text-yellow-900 p-3 rounded-lg text-center">
+      <h4 class="font-medium text-sm">Total Outstanding</h4>
+      <p class="text-xl mt-1 font-bold">₹3,000</p>
+    </div>
+    <div class="bg-green-100 text-green-900 p-3 rounded-lg text-center">
+      <h4 class="font-medium text-sm">Top Paid Service</h4>
+      <p class="text-base mt-1 font-medium">3D Animation</p>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="bg-white border rounded-lg p-3 shadow">
+      <h4 class="font-medium text-sm mb-1">Services Payment Distribution</h4>
+      <canvas id="pieChart" height="160"></canvas>
+    </div>
+    <div class="bg-white border rounded-lg p-3 shadow">
+      <h4 class="font-medium text-sm mb-1">Monthly Payment Trend</h4>
+      <canvas id="barChart" height="160"></canvas>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Invoice Search & Filter -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-800 mb-4">Invoice Search & Filters</h3>
+    <div class="grid md:grid-cols-3 gap-4">
+      <input type="text" placeholder="Search by Project Name" class="border px-3 py-2 rounded focus:outline-none">
+      <select class="border px-3 py-2 rounded focus:outline-none">
+        <option>Status (All)</option>
+        <option>Paid</option>
+        <option>Pending</option>
+      </select>
+      <input type="month" class="border px-3 py-2 rounded focus:outline-none">
+    </div>
+  </div>
+
+  
+
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  function approveAndShowQR() {
+    document.getElementById("qrPaymentSection").classList.remove("hidden");
+    document.getElementById("reviewSection").classList.add("hidden");
+  }
+
+  // Pie Chart
+  new Chart(document.getElementById('pieChart'), {
+    type: 'pie',
+    data: {
+      labels: ['2D', '3D', 'VFX', 'Game'],
+      datasets: [{
+        label: 'Service Split',
+        data: [3000, 5000, 2000, 1000],
+        backgroundColor: ['#3B82F6', '#9333EA', '#F59E0B', '#10B981']
+      }]
+    }
+  });
+
+  // Bar Chart
+  new Chart(document.getElementById('barChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [{
+        label: '₹ Payments',
+        data: [2000, 3000, 4000, 2500, 3800, 1200, 3000],
+        backgroundColor: '#3B82F6'
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+
+<!-- ✅ Profile Tab -->
+  <div id="profile" class="hidden">  
+<h2 class="text-2xl font-bold text-blue-800 mb-4">Profile & Settings</h2>
+
+  <!-- Personal Details -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-3">Edit Personal Details</h3>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" value="Allen Clerk" class="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" value="allen@example.com" class="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Phone</label>
+        <input type="tel" value="+91-9876543210" class="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div class="flex items-end">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Change Password -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-3">Change Password</h3>
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Current Password</label>
+        <input type="password" class="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">New Password</label>
+        <input type="password" class="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+        <input type="password" class="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Update Password</button>
+    </form>
+  </div>
+
+  <!-- Contact Preferences -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-3">Contact Preferences</h3>
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <label class="text-sm font-medium text-gray-700">Receive Email Updates</label>
+        <input type="checkbox" class="toggle-checkbox hidden" id="emailPref">
+        <label for="emailPref" class="toggle-label block w-14 h-8 rounded-full bg-gray-300 relative cursor-pointer">
+          <span class="dot absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition"></span>
+        </label>
+      </div>
+      <div class="flex items-center justify-between">
+        <label class="text-sm font-medium text-gray-700">Receive SMS Notifications</label>
+        <input type="checkbox" class="toggle-checkbox hidden" id="smsPref">
+        <label for="smsPref" class="toggle-label block w-14 h-8 rounded-full bg-gray-300 relative cursor-pointer">
+          <span class="dot absolute left-1 top-1 w-6 h-6 bg-white rounded-full transition"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+<!-- Notifications Center -->
+<div id="notifications" class="hidden animate-fade-in space-y-6">
+  <!-- Header -->
+  <h2 class="text-2xl font-bold text-blue-800 mb-4">Notifications Center</h2>
+
+  <!-- Filter Bar -->
+  <div class="flex flex-wrap gap-3 items-center">
+    <label for="filter" class="text-sm font-medium text-gray-700">Filter by:</label>
+    <select id="filter" onchange="filterNotifications()" class="px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="all">All</option>
+      <option value="unread">Unread</option>
+      <option value="project">Project</option>
+      <option value="payment">Payment</option>
+      <option value="system">System</option>
+    </select>
+  </div>
+
+  <!-- Notifications List -->
+  <div id="notificationList" class="space-y-4">
+    <!-- Example Notification Cards -->
+    <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500" data-type="project" data-read="false">
+      <div class="flex justify-between items-start">
+        <div>
+          <h4 class="font-semibold text-blue-700">Project "VFX Intro" Moved to Review</h4>
+          <p class="text-sm text-gray-600">🗓 July 30, 2025 • Project Update</p>
+        </div>
+        <button onclick="markAsRead(this)" class="text-xs text-blue-600 hover:underline">Mark as Read</button>
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500" data-type="payment" data-read="false">
+      <div class="flex justify-between items-start">
+        <div>
+          <h4 class="font-semibold text-green-700">₹3,000 Payment Received</h4>
+          <p class="text-sm text-gray-600">🗓 July 29, 2025 • Payment</p>
+        </div>
+        <button onclick="markAsRead(this)" class="text-xs text-blue-600 hover:underline">Mark as Read</button>
+      </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-gray-500" data-type="system" data-read="true">
+      <div class="flex justify-between items-start">
+        <div>
+          <h4 class="font-semibold text-gray-800">Welcome to Manikarnika Studio Portal</h4>
+          <p class="text-sm text-gray-600">🗓 July 20, 2025 • System Message</p>
+        </div>
+        <span class="text-xs text-gray-500 italic">Read</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function filterNotifications() {
+    const selected = document.getElementById('filter').value;
+    const cards = document.querySelectorAll('#notificationList > div');
+
+    cards.forEach(card => {
+      const type = card.dataset.type;
+      const read = card.dataset.read === "true";
+
+      let show = false;
+
+      if (selected === "all") show = true;
+      else if (selected === "unread") show = !read;
+      else if (selected === type) show = true;
+
+      card.style.display = show ? "block" : "none";
+    });
+  }
+
+  function markAsRead(button) {
+    const card = button.closest('div[data-type]');
+    card.dataset.read = "true";
+    button.outerHTML = `<span class="text-xs text-gray-500 italic">Read</span>`;
+    filterNotifications(); // Refresh filter if on unread
+  }
+</script>
+
+
+<!------------help ---------------->
+
+<div id="support" class="hidden animate-fade-in space-y-6">
+  <h2 class="text-2xl font-bold text-blue-800 mb-4">Support & Helpdesk</h2>
+
+  <!-- Raise a Ticket -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-2">Raise a Support Ticket</h3>
+    <form class="space-y-4">
+      <input type="text" placeholder="Subject" class="w-full px-4 py-2 border rounded" />
+      <textarea placeholder="Describe your issue..." class="w-full px-4 py-2 border rounded"></textarea>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Submit</button>
+    </form>
+  </div>
+
+  <!-- Ticket Logs -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-2">Previous Tickets</h3>
+    <ul class="text-sm text-gray-800 divide-y">
+      <li class="py-2">[#1023] Payment query - <span class="text-green-600">Resolved</span></li>
+      <li class="py-2">[#1019] Project delay concern - <span class="text-yellow-600">Pending</span></li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+    <h3 class="text-lg font-semibold text-blue-700 mb-2">Frequently Asked Questions</h3>
+    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+      <li>How do I track my project?</li>
+      <li>How to reset my password?</li>
+      <li>How to raise a payment dispute?</li>
+    </ul>
+  </div>
+</div>
+
+
       </main>
     </section>
-  </body>
+</body>
 </html>
-
-<script src="https://cdn.tailwindcss.com"></script>
