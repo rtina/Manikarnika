@@ -4,6 +4,9 @@ const app = express();
 const ejsMate = require("ejs-mate");
 const publicRoutes = require('./routes/publicRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const mongoose = require("mongoose");
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/Manikarnika';
+
 // ========================all the imports================================= 
 app.set("view engine" , "ejs");
 app.set("views" , path.join(__dirname,"views"));
@@ -16,6 +19,21 @@ app.engine('ejs', ejsMate);
 app.use('/', publicRoutes);
 app.use('/admin', adminRoutes); 
 
-app.listen(4000,()=>{
-    console.log("listening on port 4000");
-})
+app.get("/dashboard",(req,res)=>{
+    res.render("client/dashboard");
+}) ;
+
+// ========================database connection=================================
+async function main(){
+    await mongoose.connect(dbUrl);
+}
+
+main().then(()=>{
+    console.log("Connection successful");
+    app.listen(4000,()=>{
+        console.log("listening on port 4000");
+    });
+}).catch( (err) =>{
+    console.log("Connection unsuccessful");
+    console.error(err); // Log the actual error for better debugging
+});

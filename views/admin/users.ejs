@@ -1,54 +1,56 @@
 <%- layout("/layouts/adminLayout") %>
 
-<div class="p-6 bg-gray-900 min-h-screen text-white">
-   
-  
-    <!-- Search and Filters -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
-      <div class="relative w-full md:w-1/3">
-        <input
-          type="text"
-          placeholder="Search users"
-          class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-800 border border-gray-700 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-sm"></i>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <button class="bg-gray-700 px-4 py-1 rounded-full text-sm hover:bg-blue-600">Reputation</button>
-        <button class="bg-blue-600 px-4 py-1 rounded-full text-sm">New Users</button>
-        <button class="bg-gray-700 px-4 py-1 rounded-full text-sm hover:bg-blue-600">Visitors</button>
-        <button class="bg-gray-700 px-4 py-1 rounded-full text-sm hover:bg-blue-600">Editors</button>
-        <button class="bg-gray-700 px-4 py-1 rounded-full text-sm hover:bg-blue-600">Moderators</button>
-      </div>
+<div class="p-6 bg-gray-900 flex-1 overflow-auto">
+    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-700">
+        <table class="min-w-full divide-y divide-gray-700">
+            <thead class="bg-gray-800">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                        <div class="flex items-center">
+                            Name
+                            <i class="fas fa-sort ml-2 text-gray-500"></i>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                        <div class="flex items-center">
+                            Contact Info
+                            <i class="fas fa-sort ml-2 text-gray-500"></i>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                        <div class="flex items-center">
+                            Roles
+                            <i class="fas fa-sort ml-2 text-gray-500"></i>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-gray-800 divide-y divide-gray-700">
+                <% allUsers.forEach(user => { %>
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">
+                        <div class="flex items-center">
+                            <img class="h-8 w-8 rounded-full" src="/images/face1.jpeg" alt="<%= user.name %>">
+                            <div class="ml-4"><%= user.name %></div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400"><%= user.email %></td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-700 text-gray-200">
+                            <%= user.role %>
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="/users/<%= user.id %>/edit" class="text-blue-500 hover:text-blue-400 transition-colors duration-200">
+                            <i class="fas fa-pencil-alt text-lg"></i>
+                        </a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </div>
-  
-    <!-- User Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  
-      <!-- User Card -->
-      <div class="bg-gray-800 p-5 rounded-xl shadow-md border border-gray-700 hover:shadow-xl hover:border-blue-600 transition duration-300 group">
-        <a href="/admin/users/1" class="flex items-center space-x-4 cursor-pointer">
-          <img src="https://i.pravatar.cc/100?img=8" class="w-16 h-16 rounded-full border border-gray-600 group-hover:ring-2 group-hover:ring-blue-500" />
-          <div>
-            <h2 class="text-lg font-semibold group-hover:text-blue-400">Lelah Nichols</h2>
-            <p class="text-sm text-gray-400">Troy, MI</p>
-          </div>
-        </a>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="bg-blue-700 text-white text-xs px-3 py-1 rounded-full">React</span>
-          <span class="bg-blue-700 text-white text-xs px-3 py-1 rounded-full">UI/UX</span>
-          <span class="bg-blue-700 text-white text-xs px-3 py-1 rounded-full">Freelancer</span>
-        </div>
-        <div class="mt-4 flex justify-end gap-3">
-          <a href="/admin/users/1/edit" class="text-sm text-blue-400 hover:underline">Edit</a>
-          <form method="POST" action="/admin/users/1/delete" onsubmit="return confirm('Are you sure you want to delete this user?')">
-            <button type="submit" class="text-sm text-red-500 hover:underline">Delete</button>
-          </form>
-        </div>
-      </div>
-  
-      <!-- Add more cards like above for other users -->
-      
-    </div>
-  </div>
-  
+</div>

@@ -47,3 +47,9 @@
 .right-sidebar-top-border {
     border-top: 1px solid #374151; /* gray-700 */
 }
+.btn-background:hover {
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+    background-color: #6b7280;
+}
+
