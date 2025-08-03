@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artist Dashboard - Manikarnika Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 text-gray-900 font-sans transition duration-300 ease-in-out">
+  <section class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-72 bg-blue-700 text-white p-6 space-y-6">
+      <div class="flex items-center gap-3">
+        <img src="images/img2.png" alt="Logo" class="w-10 h-10 rounded-full animate-bounce" />
+        <h1 class="text-xl font-bold">ManikarnikaStudio</h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <img src="https://i.pravatar.cc/50" alt="Artist Avatar" class="rounded-full w-10 h-10" />
+        <div>
+          <p class="font-semibold text-white">Artist Panel</p>
+          <p class="text-sm text-blue-200">Aarav Sharma</p>
+        </div>
+      </div>
+      <nav>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#" onclick="showTab('dashboard')" class="block px-3 py-2 rounded hover:bg-blue-600">Dashboard</a></li>
+          <li><a href="#" onclick="showTab('portfolio')" class="block px-3 py-2 rounded hover:bg-blue-600">Portfolio</a></li>
+          <li><a href="#" onclick="showTab('projects')" class="block px-3 py-2 rounded hover:bg-blue-600">Assigned Projects</a></li>
+          <li><a href="#" onclick="showTab('deliverables')" class="block px-3 py-2 rounded hover:bg-blue-600">File Uploads</a></li>
+          <li><a href="#" onclick="showTab('messages')" class="block px-3 py-2 rounded hover:bg-blue-600">Messages</a></li>
+          <li><a href="#" onclick="showTab('calls')" class="block px-3 py-2 rounded hover:bg-blue-600">Call History</a></li>
+          <li><a href="#" onclick="showTab('payments')" class="block px-3 py-2 rounded hover:bg-blue-600">Payment History</a></li>
+          <li><a href="#" onclick="showTab('settings')" class="block px-3 py-2 rounded hover:bg-blue-600">Profile & Settings</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 space-y-8 bg-white relative">
+      <!-- Top Right Icon -->
+      <div class="absolute top-6 right-8">
+        <div class="relative group">
+          <button class="text-2xl focus:outline-none hover:text-blue-700">⚙️</button>
+          <div class="absolute right-0 mt-2 w-32 rounded shadow-lg p-2 text-sm bg-white text-gray-700 hidden group-hover:block">
+            <a href="#" class="block px-2 py-1 hover:bg-gray-100 rounded">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="dashboard" class="tab">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Dashboard</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-white shadow-md p-4 rounded border-l-4 border-blue-500">
+            <h3 class="text-lg font-semibold">Active Projects</h3>
+            <p class="text-sm text-gray-600 mt-2">2 In Progress</p>
+          </div>
+          <div class="bg-white shadow-md p-4 rounded border-l-4 border-green-500">
+            <h3 class="text-lg font-semibold">Upcoming Deadlines</h3>
+            <p class="text-sm text-gray-600 mt-2">3 Due This Week</p>
+          </div>
+          <div class="bg-white shadow-md p-4 rounded border-l-4 border-purple-500">
+            <h3 class="text-lg font-semibold">Earnings</h3>
+            <p class="text-sm text-gray-600 mt-2">₹15,000 this month</p>
+          </div>
+          <div class="bg-white shadow-md p-4 rounded border-l-4 border-yellow-500">
+            <h3 class="text-lg font-semibold">Pending Feedback</h3>
+            <p class="text-sm text-gray-600 mt-2">1 Pending Review</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio -->
+      <div id="portfolio" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Portfolio</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="p-4 border rounded shadow hover:shadow-md transition bg-blue-50">
+            <h3 class="font-semibold">3D Model Showcase</h3>
+            <p class="text-sm text-gray-600 mt-1">Character designs, assets</p>
+            <button class="mt-2 text-blue-600 hover:underline text-sm">View Project</button>
+          </div>
+          <div class="p-4 border rounded shadow hover:shadow-md transition bg-blue-50">
+            <h3 class="font-semibold">Motion Graphics</h3>
+            <p class="text-sm text-gray-600 mt-1">Animations, transitions</p>
+            <button class="mt-2 text-blue-600 hover:underline text-sm">View Project</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assigned Projects -->
+      <div id="projects" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Assigned Projects</h2>
+        <div class="p-4 border rounded shadow bg-white">
+          <h4 class="font-semibold">3D Character Animation</h4>
+          <p class="text-sm text-gray-600">Deadline: 5th Aug 2025</p>
+          <div class="w-full bg-gray-200 h-2 mt-3 rounded">
+            <div class="bg-blue-500 h-2 rounded" style="width: 60%;"></div>
+          </div>
+          <p class="text-xs mt-1 text-gray-500">60% Complete</p>
+        </div>
+      </div>
+
+      <!-- File Uploads -->
+      <div id="deliverables" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Upload Final Files</h2>
+        <div class="p-4 border rounded shadow bg-white">
+          <label class="block mb-2 font-medium">Select File:</label>
+          <input type="file" class="border p-2 rounded w-full mb-4" />
+          <textarea class="border p-2 w-full rounded" placeholder="Notes (optional)..."></textarea>
+          <button class="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Upload</button>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div id="messages" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Messages</h2>
+        <div class="bg-white p-4 rounded shadow max-h-64 overflow-y-auto">
+          <div class="bg-blue-100 p-3 rounded mb-2">
+            <p><strong>Client:</strong> Final changes look good.</p>
+            <p class="text-xs text-gray-500 text-right">30 Jul, 6:20 PM</p>
+          </div>
+          <div class="bg-green-100 p-3 rounded text-right">
+            <p><strong>You:</strong> Great! Shall I proceed to render?</p>
+            <p class="text-xs text-gray-500">30 Jul, 6:25 PM</p>
+          </div>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <input type="text" class="border p-2 rounded w-full" placeholder="Type a message..." />
+          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+        </div>
+      </div>
+
+      <!-- Call History -->
+      <div id="calls" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Call History</h2>
+        <div class="bg-white p-4 rounded shadow">
+          <ul class="text-sm space-y-2">
+            <li>📞 Kickoff Call - 25 July 2025 - <span class="text-blue-600 cursor-pointer underline">Watch</span></li>
+            <li>📞 Review Call - 28 July 2025 - No recording</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment History -->
+      <div id="payments" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Payment History</h2>
+        <div class="bg-white p-4 rounded shadow">
+          <div class="flex justify-between border-b py-2">
+            <p>3D Modeling Service</p>
+            <p class="text-green-600 font-medium">₹6,000</p>
+          </div>
+          <div class="flex justify-between border-b py-2">
+            <p>Animation Feedback Round</p>
+            <p class="text-green-600 font-medium">₹3,000</p>
+          </div>
+          <div class="flex justify-between pt-2 font-semibold">
+            <p>Total</p>
+            <p>₹9,000</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div id="settings" class="tab hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Profile & Settings</h2>
+        <div class="bg-white p-4 rounded shadow space-y-4">
+          <input type="text" class="border p-2 w-full rounded" placeholder="Full Name" value="Aarav Sharma">
+          <input type="email" class="border p-2 w-full rounded" placeholder="Email" value="aarav@artist.com">
+          <input type="password" class="border p-2 w-full rounded" placeholder="New Password">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll(".tab").forEach(el => el.classList.add("hidden"));
+      document.getElementById(tabId).classList.remove("hidden");
+    }
+    window.onload = () => showTab('dashboard');
+  </script>
+</body>
+</html>
+  

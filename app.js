@@ -32,6 +32,10 @@ app.get("/dashboard" , (req,res)=>{
     res.render("client/dashboard.ejs");
 })
 
+app.get("/Artistdashboard" , (req,res)=>{
+    res.render("artist/Artistdashboard.ejs");
+})
+
 app.get("/services" , (req,res)=>{
     res.render("public/service.ejs");
 })
