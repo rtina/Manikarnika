@@ -1,0 +1,77 @@
+<%- layout("/layouts/adminLayout") %>
+
+
+<div class="p-6 bg-gray-900 min-h-screen text-white">
+
+  
+    <!-- Filters and Download Button -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded flex items-center gap-2">
+        <i class="fas fa-download"></i> Download CSV
+      </button>
+  
+      <div class="flex gap-4">
+        <select class="bg-gray-800 border border-gray-700 text-sm text-white px-4 py-2 rounded">
+          <option>Card...</option>
+          <option>****5600</option>
+          <option>****4832</option>
+        </select>
+  
+        <select class="bg-gray-800 border border-gray-700 text-sm text-white px-4 py-2 rounded">
+          <option>Status...</option>
+          <option>Pending</option>
+          <option>Cleared</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Table -->
+    <div class="overflow-x-auto rounded-lg shadow border border-gray-800">
+      <table class="min-w-full text-sm text-gray-300">
+        <thead class="bg-gray-800 text-xs uppercase text-gray-400">
+          <tr>
+            <th class="px-6 py-3 text-left">Card</th>
+            <th class="px-6 py-3 text-left">From</th>
+            <th class="px-6 py-3 text-left">To</th>
+            <th class="px-6 py-3 text-left">Transaction</th>
+            <th class="px-6 py-3 text-left">Date</th>
+            <th class="px-6 py-3 text-left">Amount</th>
+            <th class="px-6 py-3 text-left">Status</th>
+            <th class="px-6 py-3"></th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-800 divide-y divide-gray-700">
+          <tr>
+            <td class="px-6 py-4">****5600</td>
+            <td class="px-6 py-4">John Smith</td>
+            <td class="px-6 py-4">Manikarnika Studio</td>
+            <td class="px-6 py-4 font-semibold">Wildflower Creative</td>
+            <td class="px-6 py-4">Jul 14, 2028<br><span class="text-xs text-gray-400">9:30:33 AM</span></td>
+            <td class="px-6 py-4">$5000.00 USD</td>
+            <td class="px-6 py-4">
+              <span class="bg-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full">Pending</span>
+            </td>
+            <td class="px-6 py-4 text-right">
+              <i class="fas fa-ellipsis-v text-gray-400 hover:text-gray-200 cursor-pointer"></i>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4">****4832</td>
+            <td class="px-6 py-4">Jane Doe</td>
+            <td class="px-6 py-4">Manikarnika Studio</td>
+            <td class="px-6 py-4 font-semibold">Wildflower Creative</td>
+            <td class="px-6 py-4">Jun 10, 2028<br><span class="text-xs text-gray-400">9:02:14 AM</span></td>
+            <td class="px-6 py-4">$5000.00 USD</td>
+            <td class="px-6 py-4">
+              <span class="bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full">Cleared</span>
+            </td>
+            <td class="px-6 py-4 text-right">
+              <i class="fas fa-ellipsis-v text-gray-400 hover:text-gray-200 cursor-pointer"></i>
+            </td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

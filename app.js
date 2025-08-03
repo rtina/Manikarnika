@@ -2,6 +2,10 @@ const express = require('express');
 const path = require("path");
 const app = express();
 const ejsMate = require("ejs-mate");
+const publicRoutes = require('./routes/publicRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const mongoose = require("mongoose");
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/Manikarnika';
 
 // ========================all the imports================================= 
 app.set("view engine" , "ejs");
@@ -12,18 +16,19 @@ app.engine('ejs', ejsMate);
 
 
 // ========================all the routes=================================
-app.get("/",(req,res)=>{
-    res.render("public/home.ejs");
-})
+app.use('/', publicRoutes);
+app.use('/admin', adminRoutes); 
 
-app.get("/catalogue" , (req,res)=>{
-    res.render("public/catalogue.ejs");
-})
+app.get("/dashboard",(req,res)=>{
+    res.render("client/dashboard");
+}) ;
 
-app.get("/signin" , (req,res)=>{
-    res.render("public/signin.ejs");
-})
+// ========================database connection=================================
+async function main(){
+    await mongoose.connect(dbUrl);
+}
 
+<<<<<<< HEAD
 app.get("/signup" , (req,res)=>{
     res.render("public/signup.ejs");
 })
@@ -43,3 +48,14 @@ app.get("/services" , (req,res)=>{
 app.listen(4000,()=>{
     console.log("listening on port 4000");
 })
+=======
+main().then(()=>{
+    console.log("Connection successful");
+    app.listen(4000,()=>{
+        console.log("listening on port 4000");
+    });
+}).catch( (err) =>{
+    console.log("Connection unsuccessful");
+    console.error(err); // Log the actual error for better debugging
+});
+>>>>>>> 8337d5d9935abfd637c760f5be653a2fdd60a414
