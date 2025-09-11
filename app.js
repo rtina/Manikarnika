@@ -4,6 +4,7 @@ const app = express();
 const ejsMate = require("ejs-mate");
 const publicRoutes = require('./routes/publicRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const clientRoutes = require('./routes/clientRoutes');
 const mongoose = require("mongoose");
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/Manikarnika';
 
@@ -18,11 +19,7 @@ app.engine('ejs', ejsMate);
 // ========================all the routes=================================
 app.use('/', publicRoutes);
 app.use('/admin', adminRoutes); 
-
-app.get("/dashboard",(req,res)=>{
-    res.render("client/dashboard");
-}) ;
-
+app.use('/client',clientRoutes);
 // ========================database connection=================================
 async function main(){
     await mongoose.connect(dbUrl);

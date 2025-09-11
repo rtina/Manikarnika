@@ -1,0 +1,186 @@
+<%- layout("/layouts/adminLayout") %>
+
+
+<div class="p-6 bg-gray-900 min-h-screen">
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-bold text-white">Projects</h1>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <input type="text" placeholder="Search projects..." class="pl-10 pr-4 py-2 bg-gray-800 text-gray-200 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                <i class="fas fa-plus mr-2"></i>New Project
+            </button>
+        </div>
+    </div>
+
+    <div class="flex space-x-6 border-b border-gray-700 mb-6">
+        <a href="#" class="px-3 py-2 text-blue-500 border-b-2 border-blue-500 font-semibold">All Projects</a>
+        <a href="#" class="px-3 py-2 text-gray-400 hover:text-white transition-colors duration-200">Active</a>
+        <a href="#" class="px-3 py-2 text-gray-400 hover:text-white transition-colors duration-200">Completed</a>
+    </div>
+
+    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700">
+        <div class="grid grid-cols-6 text-xs font-medium text-gray-400 uppercase tracking-wider px-6 py-4 border-b border-gray-700">
+            <div class="col-span-1">Project</div>
+            <div class="col-span-1">Status</div>
+            <div class="col-span-1">Artist</div>
+            <div class="col-span-1">Client</div>
+            <div class="col-span-1">Deadline</div>
+            <div class="col-span-1">Progress</div>
+        </div>
+
+        <div class="divide-y divide-gray-700">
+            <div class="grid grid-cols-6 items-center px-6 py-4 text-sm text-gray-200 hover:bg-gray-700 transition-colors duration-200">
+                <div class="col-span-1 flex items-center space-x-3">
+                    <div class="h-10 w-10 bg-blue-600 rounded-full flex items-center justify-center font-bold text-white text-xs">GE</div>
+                    <div>
+                        <div class="font-medium">Gallery Exhibition</div>
+                        <div class="text-xs text-gray-400">Art Pieces</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <span class="px-3 py-1 bg-yellow-600 text-white text-xs rounded-full">In Progress</span>
+                </div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center text-gray-300 text-xs">EW</div>
+                    <div class="text-sm">Emma Wilson</div>
+                </div>
+                <div class="col-span-1 text-sm text-gray-300">Modern Art Gallery</div>
+                <div class="col-span-1 text-sm text-gray-300">Dec 15, 2023</div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="w-3/4 bg-gray-700 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 65%;"></div>
+                    </div>
+                    <span class="text-sm text-gray-400">65%</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-6 items-center px-6 py-4 text-sm text-gray-200 hover:bg-gray-700 transition-colors duration-200">
+                <div class="col-span-1 flex items-center space-x-3">
+                    <div class="h-10 w-10 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-xs">FS</div>
+                    <div>
+                        <div class="font-medium">Film Score</div>
+                        <div class="text-xs text-gray-400">Audio Production</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <span class="px-3 py-1 bg-yellow-600 text-white text-xs rounded-full">In Progress</span>
+                </div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center text-gray-300 text-xs">RT</div>
+                    <div class="text-sm">Ryan Taylor</div>
+                </div>
+                <div class="col-span-1 text-sm text-gray-300">Indie Film Studio</div>
+                <div class="col-span-1 text-sm text-gray-300">Nov 30, 2023</div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="w-3/4 bg-gray-700 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 80%;"></div>
+                    </div>
+                    <span class="text-sm text-gray-400">80%</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-6 items-center px-6 py-4 text-sm text-gray-200 hover:bg-gray-700 transition-colors duration-200">
+                <div class="col-span-1 flex items-center space-x-3">
+                    <div class="h-10 w-10 bg-green-600 rounded-full flex items-center justify-center font-bold text-white text-xs">PP</div>
+                    <div>
+                        <div class="font-medium">Product Photography</div>
+                        <div class="text-xs text-gray-400">E-Commerce</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <span class="px-3 py-1 bg-yellow-600 text-white text-xs rounded-full">In Progress</span>
+                </div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center text-gray-300 text-xs">SC</div>
+                    <div class="text-sm">Sophia Chen</div>
+                </div>
+                <div class="col-span-1 text-sm text-gray-300">Luxury Brand</div>
+                <div class="col-span-1 text-sm text-gray-300">Dec 5, 2023</div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="w-3/4 bg-gray-700 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 45%;"></div>
+                    </div>
+                    <span class="text-sm text-gray-400">45%</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-6 items-center px-6 py-4 text-sm text-gray-200 hover:bg-gray-700 transition-colors duration-200">
+                <div class="col-span-1 flex items-center space-x-3">
+                    <div class="h-10 w-10 bg-orange-600 rounded-full flex items-center justify-center font-bold text-white text-xs">BI</div>
+                    <div>
+                        <div class="font-medium">Book Illustrations</div>
+                        <div class="text-xs text-gray-400">Children's Book</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <span class="px-3 py-1 bg-yellow-600 text-white text-xs rounded-full">In Progress</span>
+                </div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center text-gray-300 text-xs">MJ</div>
+                    <div class="text-sm">Marcus Johnson</div>
+                </div>
+                <div class="col-span-1 text-sm text-gray-300">Publishing House</div>
+                <div class="col-span-1 text-sm text-gray-300">Dec 20, 2023</div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="w-3/4 bg-gray-700 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 30%;"></div>
+                    </div>
+                    <span class="text-sm text-gray-400">30%</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-6 items-center px-6 py-4 text-sm text-gray-200 hover:bg-gray-700 transition-colors duration-200">
+                <div class="col-span-1 flex items-center space-x-3">
+                    <div class="h-10 w-10 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-xs">MD</div>
+                    <div>
+                        <div class="font-medium">Mural Design</div>
+                        <div class="text-xs text-gray-400">Public Art</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <span class="px-3 py-1 bg-yellow-600 text-white text-xs rounded-full">In Progress</span>
+                </div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center text-gray-300 text-xs">EW</div>
+                    <div class="text-sm">Emma Wilson</div>
+                </div>
+                <div class="col-span-1 text-sm text-gray-300">City Council</div>
+                <div class="col-span-1 text-sm text-gray-300">Jan 10, 2024</div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="w-3/4 bg-gray-700 rounded-full h-2">
+                        <div class="bg-blue-500 h-2 rounded-full" style="width: 15%;"></div>
+                    </div>
+                    <span class="text-sm text-gray-400">15%</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-6 items-center px-6 py-4 text-sm text-gray-200 hover:bg-gray-700 transition-colors duration-200">
+                <div class="col-span-1 flex items-center space-x-3">
+                    <div class="h-10 w-10 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-xs">AD</div>
+                    <div>
+                        <div class="font-medium">Advertising Jingle</div>
+                        <div class="text-xs text-gray-400">Commercial</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <span class="px-3 py-1 bg-green-600 text-white text-xs rounded-full">Completed</span>
+                </div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center text-gray-300 text-xs">RT</div>
+                    <div class="text-sm">Ryan Taylor</div>
+                </div>
+                <div class="col-span-1 text-sm text-gray-300">Marketing Agency</div>
+                <div class="col-span-1 text-sm text-gray-300">Nov 15, 2023</div>
+                <div class="col-span-1 flex items-center space-x-2">
+                    <div class="w-3/4 bg-gray-700 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 100%;"></div>
+                    </div>
+                    <span class="text-sm text-gray-400">100%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

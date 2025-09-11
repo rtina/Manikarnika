@@ -1,3 +1,5 @@
+const Quote = require("../models/service");
+
 module.exports.getHome = (req, res) => {
     res.render('public/home');
   };
@@ -18,3 +20,8 @@ module.exports.getRegister = (req, res) => {
     res.render('public/signup');
   };
   
+  module.exports.postServices = async (req, res) => {
+   const newQuote = new Quote(req.body.quote);
+   await newQuote.save();
+   res.render("public/thankyou");
+  };

@@ -16,3 +16,7 @@ module.exports.getTransactions = async (req, res)=>{
 module.exports.getTeam = async (req, res)=>{
     res.render('admin/team');
 }
+
+module.exports.getProjects = async (req, res)=>{
+    res.render('admin/project');
+}

@@ -1,0 +1,105 @@
+<%- layout("/layouts/clientLayout") %>
+
+<div class="max-w-5xl mx-auto bg-[#0f172a] text-white rounded-xl shadow-xl overflow-hidden">
+
+  <!-- Header with brighter gradient and profile -->
+  <div class="bg-gradient-to-r from-green-400 to-blue-500 p-6 flex justify-between items-center rounded-t-xl">
+    <div class="flex items-center gap-4">
+      <img
+        src="https://randomuser.me/api/portraits/women/75.jpg"
+        alt="Profile"
+        class="w-16 h-16 rounded-full border-4 border-white"
+      />
+      <div>
+        <h2 class="text-xl font-semibold">Sarah Johnson</h2>
+        <p class="text-sm">TechCorp Solutions</p>
+        <p class="text-sm">Member since January 2023</p>
+      </div>
+    </div>
+
+    <!-- Brighter Edit Button -->
+    <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition">
+      ✏️ Edit Profile
+    </button>
+  </div>
+
+  <!-- Contact Info Section -->
+  <div class="p-6 space-y-6 bg-[#0f172a]">
+    <h3 class="text-lg font-semibold">Contact Information</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Full Name -->
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+              d="M5.121 17.804A9.935 9.935 0 0112 15c2.264 0 4.346.753 5.879 2.016M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          Full Name
+        </label>
+        <input
+          type="text"
+          value="Sarah Johnson"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+      <!-- Phone Number -->
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 5h2l.4 2M7 4h10l1 2h2a1 1 0 011 1v11a1 1 0 01-1 1h-2l-1 2H7l-1-2H4a1 1 0 01-1-1V7a1 1 0 011-1h2l1-2z" /></svg>
+          Phone Number
+        </label>
+        <input
+          type="text"
+          value="+1 (555) 123-4567"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+      <!-- Email Address -->
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+              d="M16 12H8m0 0l4-4m-4 4l4 4m4-4h-4" /></svg>
+          Email Address
+        </label>
+        <input
+          type="email"
+          value="sarah.johnson@company.com"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+      <!-- Company -->
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 21h18M3 10h18M3 6h18M9 21V6M15 21V6" /></svg>
+          Company
+        </label>
+        <input
+          type="text"
+          value="TechCorp Solutions"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+    </div>
+
+    <!-- Account Created -->
+    <p class="text-sm text-gray-400 border-t border-gray-700 pt-4 flex items-center gap-1">
+      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+          d="M8 7V3m8 4V3m-9 4h10M5 11h14M5 19h14M5 15h14" /></svg>
+      Account created on <span class="text-white ml-1">1/15/2023</span>
+    </p>
+  </div>
+</div>
+
+
