@@ -25,6 +25,27 @@ async function main(){
     await mongoose.connect(dbUrl);
 }
 
+<<<<<<< HEAD
+app.get("/signup" , (req,res)=>{
+    res.render("public/signup.ejs");
+})
+
+app.get("/dashboard" , (req,res)=>{
+    res.render("client/dashboard.ejs");
+})
+
+app.get("/Artistdashboard" , (req,res)=>{
+    res.render("artist/Artistdashboard.ejs");
+})
+
+app.get("/services" , (req,res)=>{
+    res.render("public/service.ejs");
+})
+
+app.listen(4000,()=>{
+    console.log("listening on port 4000");
+})
+=======
 main().then(()=>{
     console.log("Connection successful");
     app.listen(4000,()=>{
@@ -34,3 +55,4 @@ main().then(()=>{
     console.log("Connection unsuccessful");
     console.error(err); // Log the actual error for better debugging
 });
+>>>>>>> 8337d5d9935abfd637c760f5be653a2fdd60a414
