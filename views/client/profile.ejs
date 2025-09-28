@@ -1,24 +1,26 @@
 <%- layout("/layouts/clientLayout") %>
 
+ <%- include("../includes/flash.ejs") %>
+
 <div class="max-w-5xl mx-auto bg-[#0f172a] text-white rounded-xl shadow-xl overflow-hidden">
 
   <!-- Header with brighter gradient and profile -->
-  <div class="bg-gradient-to-r from-green-400 to-blue-500 p-6 flex justify-between items-center rounded-t-xl">
-    <div class="flex items-center gap-4">
+  <div class="bg-gradient-to-r from-blue-500 to-purple-500 p-6 flex justify-between items-center rounded-t-xl">
+     <div class="flex items-center gap-4">
       <img
         src="https://randomuser.me/api/portraits/women/75.jpg"
         alt="Profile"
         class="w-16 h-16 rounded-full border-4 border-white"
       />
       <div>
-        <h2 class="text-xl font-semibold">Sarah Johnson</h2>
-        <p class="text-sm">TechCorp Solutions</p>
-        <p class="text-sm">Member since January 2023</p>
+        <h2 class="text-xl font-semibold"><%= user.username %></h2>
+        <p class="text-sm"><%= user.email %></p>
+        <p class="text-sm"><%= user.createdAt.toDateString() %></p>
       </div>
     </div>
 
     <!-- Brighter Edit Button -->
-    <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition">
+    <button onclick="openEditModal()" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition">
       ✏️ Edit Profile
     </button>
   </div>
@@ -33,11 +35,11 @@
           <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
               d="M5.121 17.804A9.935 9.935 0 0112 15c2.264 0 4.346.753 5.879 2.016M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-          Full Name
+         Username
         </label>
         <input
           type="text"
-          value="Sarah Johnson"
+          value="<%= user.username %>"
           disabled
           class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
         />
@@ -53,7 +55,7 @@
         </label>
         <input
           type="text"
-          value="+1 (555) 123-4567"
+          value="<%= user.phoneNumber %>"
           disabled
           class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
         />
@@ -69,7 +71,7 @@
         </label>
         <input
           type="email"
-          value="sarah.johnson@company.com"
+          value="<%= user.email %>"
           disabled
           class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
         />
@@ -81,15 +83,70 @@
           <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
               d="M3 21h18M3 10h18M3 6h18M9 21V6M15 21V6" /></svg>
-          Company
+          street address
         </label>
         <input
           type="text"
-          value="TechCorp Solutions"
+          value="<%= user.address.street %>"
           disabled
           class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
         />
       </div>
+
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <i class="fa-solid fa-thumbtack"></i>
+          Pincode 
+        </label>
+        <input
+          type="text"
+          value="<%= user.address.pincode %>"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+         <i class="fa-solid fa-globe"></i>
+          Country
+        </label>
+        <input
+          type="text"
+          value="<%= user.address.country %>"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <i class="fa-solid fa-flag-usa"></i>
+          state 
+        </label>
+        <input
+          type="text"
+          value="<%= user.address.state %>"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+
+      <div>
+        <label class="text-sm text-gray-400 flex items-center gap-1 mb-1">
+          <i class="fa-solid fa-city"></i>
+          city 
+        </label>
+        <input
+          type="text"
+          value="<%= user.address.city %>"
+          disabled
+          class="w-full bg-[#1e293b] text-white rounded-md px-4 py-2"
+        />
+      </div>
+
+
     </div>
 
     <!-- Account Created -->
@@ -97,9 +154,97 @@
       <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
         viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
           d="M8 7V3m8 4V3m-9 4h10M5 11h14M5 19h14M5 15h14" /></svg>
-      Account created on <span class="text-white ml-1">1/15/2023</span>
+      Account created on <span class="text-white ml-1"><%= user.createdAt.toDateString() %></span>
     </p>
   </div>
 </div>
 
 
+<!-- ✅ Popup Modal -->
+<div id="editProfileModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="bg-gray-900 w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl p-5 relative border border-gray-700">
+
+    <!-- Close Button -->
+    <button onclick="closeEditModal()" 
+      class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">
+      &times;
+    </button>
+
+    <h2 class="text-xl font-bold text-white mb-3">Edit Profile</h2>
+
+    <form action="/client/updateProfile/<%= user._id %>" method="POST" class="space-y-3">
+      <!-- Username -->
+      <div>
+        <label class="block text-gray-300 text-sm mb-1">Username</label>
+        <input type="text" name="userDate[username]" value="<%= user.username %>"
+          class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                 border border-gray-600 focus:ring-2 focus:ring-blue-500" required>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-gray-300 text-sm mb-1">Email</label>
+        <input type="email" name="userDate[email]" value="<%= user.email %>"
+          class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                 border border-gray-600 focus:ring-2 focus:ring-blue-500" required>
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label class="block text-gray-300 text-sm mb-1">Phone Number</label>
+        <input type="text" name="userDate[phoneNumber]" value="<%= user.phoneNumber %>"
+          class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                 border border-gray-600 focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Address Group -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-gray-300 text-sm mb-1">Street</label>
+          <input type="text" name="userDate[address][street]" value="<%= user.address.street %>"
+            class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                   border border-gray-600 focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-gray-300 text-sm mb-1">Pincode</label>
+          <input type="text" name="userDate[address][pincode]" value="<%= user.address.pincode %>"
+            class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                   border border-gray-600 focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-gray-300 text-sm mb-1">City</label>
+          <input type="text" name="userDate[address][city]" value="<%= user.address.city %>"
+            class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                   border border-gray-600 focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-gray-300 text-sm mb-1">State</label>
+          <input type="text" name="userDate[address][state]" value="<%= user.address.state %>"
+            class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                   border border-gray-600 focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-gray-300 text-sm mb-1">Country</label>
+          <input type="text" name="userDate[address][country]" value="<%= user.address.country %>"
+            class="w-full px-3 py-2 rounded-md bg-gray-800 text-white text-sm 
+                   border border-gray-600 focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <button type="submit" 
+        class="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-green-700 rounded-md text-white font-medium text-sm">
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openEditModal() {
+    document.getElementById('editProfileModal').classList.remove('hidden');
+  }
+  function closeEditModal() {
+    document.getElementById('editProfileModal').classList.add('hidden');
+  }
+</script>

@@ -1,0 +1,61 @@
+<% if (success && success.length > 0) { %>
+
+<!-- Flash Alert -->
+<div id="flash-alert" 
+     class="fixed top-0 left-0 right-0 bg-green-600 text-white px-6 py-4 
+            rounded-none shadow-lg flex items-center justify-between w-full max-w-full z-50">
+  <span class="text-base font-medium">✅ <%= success %></span>
+  <button onclick="closeAlert()" class="ml-4 text-white hover:text-gray-200 text-xl">&times;</button>
+</div>
+<%}%>
+
+
+<% if (error && error.length > 0) {%>
+
+<div id="error-alert" 
+     class="fixed top-0 left-0 right-0 bg-red-600 text-white px-6 py-4 
+            rounded-none shadow-lg flex items-center justify-between w-full max-w-full z-50">
+  <span class="text-base font-medium">❌ <%= error %></span>
+  <button onclick="closeErrorAlert()" class="ml-4 text-white hover:text-gray-200 text-xl">&times;</button>
+</div>
+<%}%>
+
+<script>
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    const alertBox = document.getElementById("flash-alert");
+    if (alertBox) {
+      alertBox.style.opacity = "0";
+      setTimeout(() => alertBox.remove(), 500); // remove after fade
+    }
+  }, 300000);
+
+  
+
+  // Manual close
+  function closeAlert() {
+    const alertBox = document.getElementById("flash-alert");
+    if (alertBox) {
+      alertBox.style.opacity = "0";
+      setTimeout(() => alertBox.remove(), 500);
+    }
+  }
+
+  setTimeout(() => {
+    const alertBox = document.getElementById("error-alert");
+    if (alertBox) {
+      alertBox.style.opacity = "0";
+      setTimeout(() => alertBox.remove(), 500); // remove after fade
+    }
+  }, 300000);
+
+  // Manual close
+  function closeErrorAlert() {
+    const alertBox = document.getElementById("error-alert");
+    if (alertBox) {
+      alertBox.style.opacity = "0";
+      setTimeout(() => alertBox.remove(), 500);
+    }
+  }
+
+</script>

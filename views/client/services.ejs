@@ -1,0 +1,122 @@
+<%- layout("/layouts/clientLayout") %>
+
+<div class="bg-gray-900 min-h-screen p-8 text-white">
+  <h2 class="text-3xl font-bold mb-8 text-center">Our Services</h2>
+
+  <div class="space-y-6 max-w-3xl mx-auto">
+    <!-- Service Card -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+      <h3 class="text-2xl font-semibold mb-2">2D Animation</h3>
+      <p class="text-gray-300 mb-4">
+        Bring your stories to life with fluid, expressive 2D animation that captivates audiences.
+      </p>
+      <ul class="list-disc list-inside text-gray-400 mb-4">
+        <li>Character Animation</li>
+        <li>Motion Graphics</li>
+        <li>Explainer Videos</li>
+        <li>Commercial Spots</li>
+      </ul>
+      <div class="flex space-x-4">
+        <button class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
+          Request Quote
+        </button>
+        <a href="/client/clientChat">
+            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">
+            Chat
+            </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Another Service Card -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+      <h3 class="text-2xl font-semibold mb-2">3D Animation</h3>
+      <p class="text-gray-300 mb-4">
+        Create stunning three-dimensional worlds and characters with cutting-edge 3D technology.
+      </p>
+      <ul class="list-disc list-inside text-gray-400 mb-4">
+        <li>3D Modeling</li>
+        <li>Character Rigging</li>
+        <li>Environment Design</li>
+        <li>Product Visualization</li>
+      </ul>
+       <div class="flex space-x-4">
+        <button onclick="openModal('2D Animation')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
+          Request Quote
+        </button>
+        <a href="/client/clientChat">
+            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">
+            Chat
+            </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Add more service cards similarly -->
+  </div>
+</div>
+
+
+<!-- Popup Modal -->
+<div id="quoteModal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+  <!-- Modal Content -->
+  <div class="bg-black w-full max-w-lg rounded-xl shadow-2xl p-6 relative border border-gray-700">
+    
+    <!-- Close Button -->
+    <button onclick="closeModal()" 
+            class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl">
+      &times;
+    </button>
+
+    <h2 class="text-2xl font-bold text-white mb-6">Request a Quote</h2>
+    
+    <form class="space-y-4">
+      <!-- Name -->
+      <div>
+        <label class="block text-gray-300">Full Name</label>
+        <input type="text" 
+               class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-indigo-500" 
+               required>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-gray-300">Email</label>
+        <input type="email" 
+               class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-indigo-500" 
+               required>
+      </div>
+
+      <!-- Service -->
+      <div>
+        <label class="block text-gray-300">Service</label>
+        <input id="serviceInput" type="text" readonly
+               class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600">
+      </div>
+
+      <!-- Project Details -->
+      <div>
+        <label class="block text-gray-300">Project Details</label>
+        <textarea class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-indigo-500" 
+                  rows="4"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" 
+              class="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
+        Submit Request
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal(serviceName) {
+    document.getElementById('quoteModal').classList.remove('hidden');
+    document.getElementById('serviceInput').value = serviceName;
+  }
+
+  function closeModal() {
+    document.getElementById('quoteModal').classList.add('hidden');
+  }
+</script>

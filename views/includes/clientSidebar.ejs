@@ -3,36 +3,29 @@
     <div class="p-6">
         <div class="mb-6">
             <a href="/" class="flex items-center">
-                <i class="fas fa-chart-line text-blue-500 text-3xl mr-2"></i>
+               <img src="images/img2.png" alt="Logo" class="w-10 h-10" />
                 <div>
                     <span class="text-gray-50 text-2xl font-bold block">Manikarnika</span>
                     <span class="text-gray-50 text-base font-bold block leading-none">Studio</span>
                 </div>
             </a>
         </div>
-        
-        <div class="flex items-center space-x-4">
-            <img class="h-12 w-12 rounded-full" src="https://i.pravatar.cc/150?img=3" alt="User Profile">
-            <div>
-                <h2 class="text-lg font-semibold">Sarah Johnson</h2>
-                <p class="text-sm text-gray-400">TechCorp Solutions</p>
-            </div>
-        </div>
     </div>
 
     <nav class="flex-grow p-4 space-y-2">
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+        <a href="/client/clientProfile/<%=currentUser._id%>" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+            <i class="fa-solid fa-address-card"></i>
+            <span>Profile</span>
+        </a>
+        <a href="/client/clientServices" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
             <i class="fas fa-th-large"></i>
-            <span>Dashboard</span>
+            <span>Services</span>
         </a>
         <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
             <i class="fas fa-folder"></i>
             <span>Projects</span>
         </a>
-        <a href="/client/clientProfile" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
-            <i class="fa-solid fa-address-card"></i>
-            <span>Profile</span>
-        </a>
+        
         <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
             <i class="fas fa-credit-card"></i>
             <span>Payments</span>
@@ -41,13 +34,6 @@
             <i class="fa-solid fa-comment"></i>
             <span>Chats</span>
         </a>
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
-            <i class="fas fa-file-alt"></i>
-            <span>Reports</span>
-        </a>
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
-            <i class="fas fa-bell"></i>
-            <span>Notifications</span>
         </a>
         <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
             <i class="fas fa-question-circle"></i>
@@ -60,7 +46,7 @@
     </nav>
     
     <div class="p-4 border-t border-gray-700">
-        <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-red-400 hover:bg-gray-800 transition-colors duration-200">
+        <a href="/client/logout" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-red-400 hover:bg-gray-800 transition-colors duration-200">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span>
         </a>
