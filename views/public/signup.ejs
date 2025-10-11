@@ -1,5 +1,22 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
+<style>
+    * Remove white/yellow background from Chrome autofill */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        -webkit-text-fill-color: white !important;
+        transition: background-color 5000s ease-in-out 0s;
+        }
+</style>
+
 <section class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
         <source src="/video/vid4.mp4" type="video/mp4">

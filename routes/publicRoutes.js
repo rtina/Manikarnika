@@ -7,10 +7,8 @@ const passport = require("passport");
 const { isLoggedIn } = require("../middleware.js");
 
 router.get('/', wrapAsync(publicController.getHome));
-router.route('/services')
-      .get(wrapAsync(publicController.getServices))
-      .post(isLoggedIn ,wrapAsync(publicController.postServices));
-router.get('/categories', wrapAsync(publicController.getCategories));
+router.get('/services', wrapAsync(publicController.getServices));
+router.get('/categories', wrapAsync(publicController.getCatelog));
 router.route('/login')
       .get(publicController.getLogin)
       .post(passport.authenticate("local", { failureRedirect: "/login", failureFlash: true }), publicController.postLogin);

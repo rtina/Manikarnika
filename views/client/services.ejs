@@ -1,15 +1,21 @@
 <%- layout("/layouts/clientLayout") %>
 
-<div class="bg-gray-900 min-h-screen p-8 text-white">
+<div class="bg-gray-900 min-h-screen p-8 text-white relative">
+  <!-- User History Button -->
+  <button onclick="openUserQuoteModal();" class="absolute top-8 right-8 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow-lg font-semibold flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17l4 4 4-4m0-5V3m-8 14V3" />
+    </svg>
+    History
+  </button>
+
   <h2 class="text-3xl font-bold mb-8 text-center">Our Services</h2>
 
   <div class="space-y-6 max-w-3xl mx-auto">
     <!-- Service Card -->
     <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
       <h3 class="text-2xl font-semibold mb-2">2D Animation</h3>
-      <p class="text-gray-300 mb-4">
-        Bring your stories to life with fluid, expressive 2D animation that captivates audiences.
-      </p>
+      <p class="text-gray-300 mb-4">Bring your stories to life with fluid, expressive 2D animation that captivates audiences.</p>
       <ul class="list-disc list-inside text-gray-400 mb-4">
         <li>Character Animation</li>
         <li>Motion Graphics</li>
@@ -17,106 +23,255 @@
         <li>Commercial Spots</li>
       </ul>
       <div class="flex space-x-4">
-        <button class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
+        <button onclick="openQuoteModal('2d-animation')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
           Request Quote
         </button>
         <a href="/client/clientChat">
-            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">
-            Chat
-            </button>
+          <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">Chat</button>
         </a>
       </div>
     </div>
 
-    <!-- Another Service Card -->
+    <!-- 3D Animation -->
     <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
       <h3 class="text-2xl font-semibold mb-2">3D Animation</h3>
-      <p class="text-gray-300 mb-4">
-        Create stunning three-dimensional worlds and characters with cutting-edge 3D technology.
-      </p>
+      <p class="text-gray-300 mb-4">Create stunning three-dimensional worlds and characters with cutting-edge 3D technology.</p>
       <ul class="list-disc list-inside text-gray-400 mb-4">
         <li>3D Modeling</li>
         <li>Character Rigging</li>
         <li>Environment Design</li>
         <li>Product Visualization</li>
       </ul>
-       <div class="flex space-x-4">
-        <button onclick="openModal('2D Animation')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
+      <div class="flex space-x-4">
+        <button onclick="openQuoteModal('3d-animation')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium transition">
           Request Quote
         </button>
         <a href="/client/clientChat">
-            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">
-            Chat
-            </button>
+          <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">Chat</button>
         </a>
       </div>
     </div>
 
-    <!-- Add more service cards similarly -->
+    <!-- VFX & Compositing -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+      <h3 class="text-2xl font-semibold mb-2">VFX & Compositing</h3>
+      <p class="text-gray-300 mb-4">High-quality VFX and seamless compositing for cinematic experiences.</p>
+      <ul class="list-disc list-inside text-gray-400 mb-4">
+        <li>Green Screen Keying</li>
+        <li>CG Integration</li>
+        <li>Particle Effects</li>
+        <li>Motion Tracking</li>
+      </ul>
+      <div class="flex space-x-4">
+        <button onclick="openQuoteModal('vfx-compositing')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium transition">
+          Request Quote
+        </button>
+        <a href="/client/clientChat">
+          <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">Chat</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Illustration -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+      <h3 class="text-2xl font-semibold mb-2">Illustration</h3>
+      <p class="text-gray-300 mb-4">Creative and unique illustrations tailored for your brand and stories.</p>
+      <ul class="list-disc list-inside text-gray-400 mb-4">
+        <li>Character Design</li>
+        <li>Storyboards</li>
+        <li>Editorial Art</li>
+        <li>Custom Artwork</li>
+      </ul>
+      <div class="flex space-x-4">
+        <button onclick="openQuoteModal('illustration')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium transition">
+          Request Quote
+        </button>
+        <a href="/client/clientChat">
+          <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">Chat</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Motion Graphics -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+      <h3 class="text-2xl font-semibold mb-2">Motion Graphics</h3>
+      <p class="text-gray-300 mb-4">Engaging animated graphics to elevate your marketing and storytelling.</p>
+      <ul class="list-disc list-inside text-gray-400 mb-4">
+        <li>Logo Animations</li>
+        <li>Infographics</li>
+        <li>Title Sequences</li>
+        <li>Corporate Videos</li>
+      </ul>
+      <div class="flex space-x-4">
+        <button onclick="openQuoteModal('motion-graphics')" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium transition">
+          Request Quote
+        </button>
+        <a href="/client/clientChat">
+          <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg">Chat</button>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
 
-<!-- Popup Modal -->
-<div id="quoteModal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-  <!-- Modal Content -->
-  <div class="bg-black w-full max-w-lg rounded-xl shadow-2xl p-6 relative border border-gray-700">
-    
-    <!-- Close Button -->
-    <button onclick="closeModal()" 
-            class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl">
-      &times;
-    </button>
+<!-- ================= Popup Modal ================= -->
+<div id="quoteModal" class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+  <div class="bg-gray-900 rounded-lg p-6 md:p-8 shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto relative">
+    <button onclick="closeQuoteModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
 
-    <h2 class="text-2xl font-bold text-white mb-6">Request a Quote</h2>
-    
-    <form class="space-y-4">
-      <!-- Name -->
-      <div>
-        <label class="block text-gray-300">Full Name</label>
-        <input type="text" 
-               class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-indigo-500" 
-               required>
+    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Request a Quote</h3>
+
+    <form method="POST" action="/client/clientServices" class="space-y-4 text-sm">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-300 text-xs font-medium mb-1">Username <span class="text-red-500">*</span></label>
+          <input type="text" id="username" name="quote[username]" readonly class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm">
+        </div>
+        <div>
+          <label class="block text-gray-300 text-xs font-medium mb-1">Email Address <span class="text-red-500">*</span></label>
+          <input type="email" id="email-address" name="quote[emailAddress]" readonly class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm">
+        </div>
       </div>
 
-      <!-- Email -->
       <div>
-        <label class="block text-gray-300">Email</label>
-        <input type="email" 
-               class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-indigo-500" 
-               required>
+        <label class="block text-gray-300 text-xs font-medium mb-1">Company</label>
+        <input type="text" id="company" name="quote[company]" placeholder="Your company name" class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm">
       </div>
 
-      <!-- Service -->
-      <div>
-        <label class="block text-gray-300">Service</label>
-        <input id="serviceInput" type="text" readonly
-               class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-300 text-xs font-medium mb-1">Service Needed <span class="text-red-500">*</span></label>
+          <input type="text" id="service-needed" name="quote[serviceNeeded]" readonly class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm">
+        </div>
+
+        <div>
+          <label class="block text-gray-300 text-xs font-medium mb-1">Budget Range</label>
+          <select id="budget-range" name="quote[budgetRange]" class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm">
+            <option value="">Select budget range</option>
+            <option value="under-5k">Under ₹5,000</option>
+            <option value="5k-10k">₹5,000 - ₹10,000</option>
+            <option value="10k-25k">₹10,000 - ₹25,000</option>
+            <option value="25k-50k">₹25,000 - ₹50,000</option>
+            <option value="50k-plus">₹50,000+</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Project Details -->
       <div>
-        <label class="block text-gray-300">Project Details</label>
-        <textarea class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-indigo-500" 
-                  rows="4"></textarea>
+        <label class="block text-gray-300 text-xs font-medium mb-1">Timeline</label>
+        <select id="timeline" name="quote[timeline]" class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm">
+          <option value="">Select timeline</option>
+          <option value="1-3-months">1-3 Months</option>
+          <option value="3-6-months">3-6 Months</option>
+          <option value="6-12-months">6-12 Months</option>
+          <option value="12-plus-months">12+ Months</option>
+        </select>
       </div>
 
-      <!-- Submit -->
-      <button type="submit" 
-              class="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-4 py-3 rounded-lg font-medium flex justify-center items-center gap-2 transition">
-        Submit Request
+      <div>
+        <label class="block text-gray-300 text-xs font-medium mb-1">Project Details <span class="text-red-500">*</span></label>
+        <textarea id="project-details" name="quote[projectDetails]" rows="3" placeholder="Tell us about your project goals, and any specific requirements..." class="w-full px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-200 text-sm"></textarea>
+      </div>
+
+      <button type="submit" class="w-full inline-flex items-center justify-center px-4 py-2 rounded-md text-sm text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-md">
+        <i data-lucide="send" class="w-4 h-4 mr-2"></i> Send Request
       </button>
     </form>
   </div>
 </div>
 
-<script>
-  function openModal(serviceName) {
-    document.getElementById('quoteModal').classList.remove('hidden');
-    document.getElementById('serviceInput').value = serviceName;
-  }
 
-  function closeModal() {
-    document.getElementById('quoteModal').classList.add('hidden');
-  }
+<!-- ================= History Modal ================= -->
+<div id="userQuoteModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+  <div id="userQuoteModalContent" class="bg-gray-900 rounded-lg shadow-xl p-6 w-full max-w-lg relative">
+    <button onclick="closeUserQuoteModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+    <h2 class="text-2xl font-bold text-white mb-4">Your Quote Requests</h2>
+    <div id="userQuoteDetails" class="space-y-3 text-gray-300 text-sm"></div>
+  </div>
+</div>
+
+
+<script>
+function openQuoteModal(service) {
+  const modal = document.getElementById('quoteModal');
+  const serviceInput = document.getElementById('service-needed');
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email-address');
+
+  serviceInput.value = service;
+
+  fetch('/client/currentUser', {
+    method: 'GET',
+    credentials: 'same-origin'
+  })
+  .then(response => response.json())
+  .then(user => {
+    if (user && user.username && user.email) {
+      usernameInput.value = user.username;
+      emailInput.value = user.email;
+    } else {
+      usernameInput.value = '';
+      emailInput.value = '';
+    }
+    modal.classList.remove('hidden');
+  })
+  .catch(error => {
+    console.error('Error fetching current user:', error);
+    modal.classList.remove('hidden');
+  });
+}
+
+function closeQuoteModal() {
+  document.getElementById('quoteModal').classList.add('hidden');
+}
+
+function openUserQuoteModal() {
+  document.getElementById("userQuoteModal").classList.remove("hidden");
+}
+
+function closeUserQuoteModal() {
+  document.getElementById("userQuoteModal").classList.add("hidden");
+}
+
+// Fetch quote history
+function sendHistoryRequest() {
+  fetch('/client/history', {
+    method: 'GET',
+    credentials: 'same-origin'
+  })
+  .then(response => response.json())
+  .then(data => {
+    let html = '';
+    if (Array.isArray(data) && data.length > 0) {
+      data.forEach(q => {
+        html += `<div class='mb-4 p-3 rounded bg-gray-800'>
+          <p><span class='font-semibold text-gray-200'>Service:</span> ${q.serviceNeeded}</p>
+          <p><span class='font-semibold text-gray-200'>Budget:</span> ${q.budgetRange}</p>
+          <p><span class='font-semibold text-gray-200'>Timeline:</span> ${q.timeline}</p>
+          <p><span class='font-semibold text-gray-200'>Details:</span> ${q.projectDetails}</p>
+          <p><span class='font-semibold text-gray-200'>Status:</span> ${q.status}</p>
+          <p><span class='font-semibold text-gray-200'>Requested At:</span> ${new Date(q.createdAt).toLocaleString()}</p>
+        </div>`;
+      });
+    } else {
+      html = '<p>No quote requests found.</p>';
+    }
+    document.getElementById("userQuoteDetails").innerHTML = html;
+    openUserQuoteModal();
+  })
+  .catch(error => {
+    document.getElementById("userQuoteDetails").innerHTML = '<p class="text-red-500">Failed to fetch history.</p>';
+    openUserQuoteModal();
+  });
+}
+
+// Attach to History button
+const historyBtn = document.querySelector('button[onclick="openUserQuoteModal();"]');
+if (historyBtn) {
+  historyBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    sendHistoryRequest();
+  });
+}
 </script>

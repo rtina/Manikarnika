@@ -27,6 +27,21 @@
     input {
         color: white; /* Set input text color to white */
     }
+    /* Remove white/yellow background from Chrome autofill */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        -webkit-text-fill-color: white !important;
+        transition: background-color 5000s ease-in-out 0s;
+        }
+
 </style>
 
 <section class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
@@ -51,7 +66,7 @@
         <form method="POST" action="/login" class="max-w-sm mx-auto">
           <div class="mb-5">
             <label for="text" class="block mb-2 text-sm font-medium text-white-900 dark:text-white">Your Username</label>
-            <input type="text" name="username" id="username" class="block py-2.5 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <input type="text" name="username" id="username" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
          </div>
           <div class="mb-5">
             <label for="password" class="block mb-2 text-sm font-medium text-white-900 dark:text-white">Your Password</label>

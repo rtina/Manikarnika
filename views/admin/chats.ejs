@@ -1,0 +1,486 @@
+<%- layout("/layouts/adminLayout") %>
+
+<div class="flex h-screen bg-[#0f172a] text-white font-sans">
+  <div class="w-1/3 border-r border-gray-700 bg-[#111827] p-4 overflow-y-auto">
+    <h2 class="text-xl font-bold mb-4">Connected Clients</h2>
+
+    <div id="clientsList" class="space-y-3">
+      <div id="noClients" class="text-gray-400 text-center py-4">
+        No clients connected
+      </div>
+    </div>
+  </div>
+
+  <div class="w-2/3 p-6 flex flex-col justify-between bg-[#0f172a]">
+    <div id="chatHeader" class="flex items-center justify-between border-b border-gray-700 pb-4 mb-4">
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/40?img=1" alt="avatar" class="w-10 h-10 rounded-full" />
+        <div>
+          <h3 class="text-lg font-semibold" id="currentClientName">Select a client</h3>
+          <p id="clientStatus" class="text-sm text-gray-500">Click on a client to start chatting</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto space-y-4 pr-4" id="chatBox">
+      <div class="text-center text-gray-400 py-8">
+        Select a client from the sidebar to start chatting
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-center gap-2">
+      <!-- File Upload Button -->
+      <button id="attachBtn" class="p-2 text-gray-400 hover:text-blue-500 transition-colors duration-200" disabled>
+        <i class="fas fa-paperclip text-xl"></i>
+      </button>
+      <input type="file" id="fileInput" style="display: none;" accept="image/*,video/*,audio/*,application/pdf,.doc,.docx,.xls,.xlsx,.txt,.zip,.rar" />
+      
+      <input
+        id="messageInput"
+        type="text"
+        placeholder="Select a client first..."
+        class="flex-grow px-4 py-2 rounded-md bg-[#1f2937] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        disabled
+      />
+      <button id="sendBtn" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-white font-semibold" disabled>
+        Send
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- File Preview Modal -->
+<div id="fileModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg w-full max-w-4xl h-full max-h-screen flex flex-col">
+    <div class="flex justify-between items-center p-4 border-b">
+      <h3 id="modalTitle" class="text-lg font-semibold text-gray-800">File Preview</h3>
+      <button onclick="closeFileModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div id="modalContent" class="flex-1 p-4 overflow-auto">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+  const userId = "<%= currentUser._id %>";
+  const userRole = "<%= currentUser.role %>";
+  const userName = "<%= currentUser.username %>";
+
+  const socket = io("http://localhost:5000");
+  const chatBox = document.getElementById("chatBox");
+  const messageInput = document.getElementById("messageInput");
+  const sendBtn = document.getElementById("sendBtn");
+  const attachBtn = document.getElementById("attachBtn");
+  const fileInput = document.getElementById("fileInput");
+  const clientsList = document.getElementById("clientsList");
+  const noClients = document.getElementById("noClients");
+  const currentClientName = document.getElementById("currentClientName");
+  const clientStatus = document.getElementById("clientStatus");
+  const fileModal = document.getElementById("fileModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalContent = document.getElementById("modalContent");
+
+  let currentRoom = null;
+  let currentClient = null;
+
+  // Join as admin
+  socket.emit("joinAdmin");
+
+  // Handle connected clients
+  socket.on("connectedClients", (clients) => {
+    updateClientsList(clients);
+  });
+
+  socket.on("newClient", (client) => {
+    addClientToList(client);
+  });
+
+  socket.on("clientDisconnected", (clientId) => {
+    removeClientFromList(clientId);
+  });
+
+  function updateClientsList(clients) {
+    clientsList.innerHTML = "";
+    
+    if (clients.length === 0) {
+      noClients.style.display = "block";
+      return;
+    }
+    
+    noClients.style.display = "none";
+    clients.forEach(client => addClientToList(client));
+  }
+
+  function addClientToList(client) {
+    const clientDiv = document.createElement("div");
+    clientDiv.className = "flex items-center gap-3 p-3 rounded-lg bg-[#1f2937] hover:bg-[#374151] cursor-pointer transition-colors";
+    clientDiv.innerHTML = `
+      <img src="https://i.pravatar.cc/40?u=${client.clientId}" class="w-10 h-10 rounded-full">
+      <div>
+        <h4 class="font-semibold">${client.clientName}</h4>
+        <p class="text-sm text-green-400">Online</p>
+      </div>
+    `;
+    
+    clientDiv.onclick = () => selectClient(client);
+    clientsList.appendChild(clientDiv);
+  }
+
+  function removeClientFromList(clientId) {
+    const clientElements = clientsList.querySelectorAll('div');
+    clientElements.forEach(element => {
+      if (element.textContent.includes(clientId)) {
+        element.remove();
+      }
+    });
+    
+    if (clientsList.children.length === 0) {
+      noClients.style.display = "block";
+    }
+  }
+
+  function selectClient(client) {
+    currentClient = client;
+    currentRoom = client.room;
+    
+    currentClientName.textContent = client.clientName;
+    clientStatus.textContent = "Online";
+    
+    // Enable messaging and file upload
+    messageInput.disabled = false;
+    messageInput.placeholder = `Message ${client.clientName}...`;
+    sendBtn.disabled = false;
+    attachBtn.disabled = false;
+    
+    // Clear chat box
+    chatBox.innerHTML = '<div class="text-center text-gray-400 py-4">Loading messages...</div>';
+    
+    // Join the client's room
+    socket.emit("joinClientChat", {
+      room: currentRoom
+    });
+  }
+
+  // File upload functionality
+  attachBtn.addEventListener("click", () => {
+    if (!currentRoom || !currentClient) {
+      alert("Please select a client first");
+      return;
+    }
+    fileInput.click();
+  });
+
+  fileInput.addEventListener("change", async (e) => {
+    if (!currentRoom || !currentClient) return;
+    
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Check file size (max 25MB)
+    if (file.size > 25 * 1024 * 1024) {
+      alert("File size too large. Maximum size is 25MB.");
+      fileInput.value = "";
+      return;
+    }
+
+    // Show uploading indicator
+    const uploadingMsg = document.createElement("div");
+    uploadingMsg.className = "flex justify-start mb-4";
+    uploadingMsg.innerHTML = `
+      <div class="max-w-[70%] px-4 py-2 rounded-lg bg-gray-200 text-gray-800">
+        <p class="font-semibold text-sm">${userName}</p>
+        <p class="mt-1 text-gray-600 flex items-center gap-2">
+          <i class="fas fa-spinner fa-spin"></i>
+          Uploading ${file.name}...
+        </p>
+      </div>
+    `;
+    chatBox.appendChild(uploadingMsg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/upload", {
+        method: "POST",
+        body: formData
+      });
+      
+      const data = await res.json();
+      
+      if (res.ok) {
+        // Remove uploading indicator
+        uploadingMsg.remove();
+        
+        // Send file message
+        const msgData = {
+          room: currentRoom,
+          text: `Shared a file: ${file.name}`,
+          senderName: userName,
+          senderId: userId,
+          senderRole: userRole,
+          fileUrl: data.fileUrl,
+          fileType: data.fileType,
+          fileName: file.name,
+          fileSize: file.size
+        };
+
+        socket.emit("sendMessage", msgData);
+      } else {
+        alert("File upload failed: " + data.error);
+        uploadingMsg.remove();
+      }
+    } catch (err) {
+      console.error("File upload failed:", err);
+      alert("File upload failed. Please try again.");
+      uploadingMsg.remove();
+    } finally {
+      fileInput.value = "";
+    }
+  });
+
+  // Message functions
+  sendBtn.onclick = sendMessage;
+  messageInput.addEventListener("keypress", e => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function sendMessage() {
+    if (!currentRoom || !currentClient) {
+      alert("Please select a client first");
+      return;
+    }
+    
+    const text = messageInput.value.trim();
+    if (!text) return;
+
+    const msgData = {
+      room: currentRoom,
+      text: text,
+      senderName: userName,
+      senderId: userId,
+      senderRole: userRole
+    };
+
+    socket.emit("sendMessage", msgData);
+    messageInput.value = "";
+  }
+
+  // Receive messages
+  socket.on("chatHistory", (messages) => {
+    chatBox.innerHTML = "";
+    
+    if (messages.length === 0) {
+      chatBox.innerHTML = '<div class="text-center text-gray-400 py-8">No messages yet. Start the conversation!</div>';
+      return;
+    }
+    
+    messages.forEach(addMessage);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+
+  socket.on("newMessage", (msg) => {
+    if (msg.room === currentRoom) {
+      addMessage(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  });
+
+  function addMessage(msg) {
+    const div = document.createElement("div");
+    const isAdmin = msg.senderRole === "admin";
+    
+    div.className = `flex ${isAdmin ? "justify-end" : "justify-start"} mb-4`;
+    
+    let messageContent = `
+        <p class="font-semibold text-sm">${msg.senderName}</p>
+        <p class="mt-1">${msg.text}</p>
+    `;
+    
+    // Add file preview if file exists
+    if (msg.fileUrl) {
+      messageContent += createFilePreview(msg, isAdmin);
+    }
+    
+    messageContent += `<p class="text-xs mt-2 text-right ${isAdmin ? "text-blue-100" : "text-gray-500"}">${msg.time}</p>`;
+    
+    div.innerHTML = `
+        <div class="max-w-[80%] px-4 py-2 rounded-lg ${isAdmin ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800"}">
+            ${messageContent}
+        </div>
+    `;
+    
+    chatBox.appendChild(div);
+  }
+
+  function createFilePreview(msg, isAdmin) {
+    const file = {
+      url: msg.fileUrl,
+      type: msg.fileType,
+      name: msg.fileName || 'File',
+      size: msg.fileSize
+    };
+
+    if (file.type.startsWith('image/')) {
+      return `
+        <div class="mt-2">
+          <img src="${file.url}" alt="${file.name}" 
+               class="max-w-full max-h-64 rounded-lg cursor-pointer hover:opacity-90 transition-opacity" 
+               onclick="openFileModal('${file.url}', '${file.name}', 'image')">
+          <p class="text-xs ${isAdmin ? 'text-blue-200' : 'text-gray-500'} mt-1">${file.name}</p>
+        </div>
+      `;
+    } else if (file.type.startsWith('video/')) {
+      return `
+        <div class="mt-2">
+          <video controls class="max-w-full max-h-64 rounded-lg cursor-pointer">
+            <source src="${file.url}" type="${file.type}">
+            Your browser does not support the video tag.
+          </video>
+          <p class="text-xs ${isAdmin ? 'text-blue-200' : 'text-gray-500'} mt-1">${file.name}</p>
+        </div>
+      `;
+    } else if (file.type.startsWith('audio/')) {
+      return `
+        <div class="mt-2">
+          <audio controls class="w-full">
+            <source src="${file.url}" type="${file.type}">
+            Your browser does not support the audio tag.
+          </audio>
+          <p class="text-xs ${isAdmin ? 'text-blue-200' : 'text-gray-500'} mt-1">${file.name}</p>
+        </div>
+      `;
+    } else {
+      const fileIcon = getFileIcon(file.type, file.name);
+      const fileTypeText = getFileTypeText(file.type);
+      const fileSize = file.size ? formatFileSize(file.size) : '';
+      
+      return `
+        <div class="mt-2">
+          <div class="flex items-center gap-3 p-3 ${isAdmin ? 'bg-blue-400' : 'bg-white'} rounded-lg border ${isAdmin ? 'border-blue-300' : 'border-gray-300'}">
+            <div class="${isAdmin ? 'text-white' : 'text-blue-500'} text-2xl">
+              ${fileIcon}
+            </div>
+            <div class="flex-1">
+              <p class="font-medium ${isAdmin ? 'text-white' : 'text-gray-800'}">${file.name}</p>
+              <p class="text-xs ${isAdmin ? 'text-blue-100' : 'text-gray-500'}">${fileTypeText}${fileSize ? ` • ${fileSize}` : ''}</p>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="openFileModal('${file.url}', '${file.name}', '${file.type}')" 
+                      class="${isAdmin ? 'bg-white text-blue-600 hover:bg-gray-100' : 'bg-blue-600 hover:bg-blue-700 text-white'} px-3 py-2 rounded-lg text-sm transition-colors">
+                <i class="fas fa-external-link-alt mr-1"></i>Open
+              </button>
+              <a href="${file.url}" download="${file.name}" 
+                 class="${isAdmin ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-gray-600 hover:bg-gray-700 text-white'} px-3 py-2 rounded-lg text-sm transition-colors">
+                <i class="fas fa-download mr-1"></i>Download
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  // File icon helper function
+  function getFileIcon(fileType, fileName) {
+    if (fileType.includes('pdf')) return '<i class="fas fa-file-pdf"></i>';
+    if (fileType.includes('word') || fileType.includes('document') || fileName?.endsWith('.doc') || fileName?.endsWith('.docx')) 
+      return '<i class="fas fa-file-word"></i>';
+    if (fileType.includes('excel') || fileName?.endsWith('.xls') || fileName?.endsWith('.xlsx')) 
+      return '<i class="fas fa-file-excel"></i>';
+    if (fileType.includes('zip') || fileType.includes('compressed') || fileName?.endsWith('.zip') || fileName?.endsWith('.rar')) 
+      return '<i class="fas fa-file-archive"></i>';
+    if (fileType.includes('text') || fileName?.endsWith('.txt')) 
+      return '<i class="fas fa-file-alt"></i>';
+    return '<i class="fas fa-file"></i>';
+  }
+
+  // File type text helper
+  function getFileTypeText(fileType) {
+    if (fileType.includes('pdf')) return 'PDF Document';
+    if (fileType.includes('word') || fileType.includes('document')) return 'Word Document';
+    if (fileType.includes('excel')) return 'Excel Spreadsheet';
+    if (fileType.includes('text')) return 'Text File';
+    if (fileType.includes('zip') || fileType.includes('compressed')) return 'Compressed File';
+    return 'Document';
+  }
+
+  // Format file size
+  function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  // File modal functions
+  function openFileModal(url, name, type) {
+    modalTitle.textContent = name;
+    fileModal.classList.remove('hidden');
+    fileModal.classList.add('flex');
+
+    if (type === 'image') {
+      modalContent.innerHTML = `
+        <img src="${url}" alt="${name}" class="w-full h-full object-contain">
+      `;
+    } else if (type.startsWith('video/')) {
+      modalContent.innerHTML = `
+        <video controls autoplay class="w-full h-full">
+          <source src="${url}" type="${type}">
+          Your browser does not support the video tag.
+        </video>
+      `;
+    } else if (type.startsWith('audio/')) {
+      modalContent.innerHTML = `
+        <div class="flex items-center justify-center h-full">
+          <audio controls autoplay class="w-full max-w-md">
+            <source src="${url}" type="${type}">
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
+      `;
+    } else if (type.includes('pdf')) {
+      modalContent.innerHTML = `
+        <iframe src="${url}" class="w-full h-full" frameborder="0"></iframe>
+      `;
+    } else {
+      modalContent.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full text-gray-600">
+          <i class="fas fa-file text-6xl mb-4"></i>
+          <p class="text-lg mb-4">This file cannot be previewed</p>
+          <a href="${url}" download="${name}" 
+             class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
+            <i class="fas fa-download mr-2"></i>Download File
+          </a>
+        </div>
+      `;
+    }
+  }
+
+  function closeFileModal() {
+    fileModal.classList.add('hidden');
+    fileModal.classList.remove('flex');
+    modalContent.innerHTML = '';
+  }
+
+  // Close modal when clicking outside
+  fileModal.addEventListener('click', (e) => {
+    if (e.target === fileModal) {
+      closeFileModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !fileModal.classList.contains('hidden')) {
+      closeFileModal();
+    }
+  });
+</script>

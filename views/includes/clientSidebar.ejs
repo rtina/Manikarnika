@@ -13,7 +13,7 @@
     </div>
 
     <nav class="flex-grow p-4 space-y-2">
-        <a href="/client/clientProfile/<%=currentUser._id%>" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+        <a href="/client/clientProfile/<%= currentUser ? currentUser._id : '' %>" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors duration-200">
             <i class="fa-solid fa-address-card"></i>
             <span>Profile</span>
         </a>

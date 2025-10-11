@@ -44,7 +44,12 @@ const userSchema = new mongoose.Schema({
       trim: true,
     },
   },
-  
+  // Default role assignment
+    role: {
+      type: String,
+      enum: ["admin", "client"],
+      default: "client"
+    },
   // Timestamps for creation and update
   createdAt: {
     type: Date,

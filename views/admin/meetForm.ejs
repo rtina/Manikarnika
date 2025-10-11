@@ -1,0 +1,147 @@
+<%- layout("/layouts/adminLayout") %>
+
+<!-- 🌐 Create Google Meet Section -->
+<style>
+    .meet-container {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 520px;
+        padding: 55px 45px;
+        border-radius: 25px;
+        box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
+        animation: fadeUp 1.2s ease-out;
+        margin: 40px auto;
+        color: #fff;
+    }
+
+    @keyframes fadeUp {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .meet-container h1 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    .meet-container label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #f0f4ff;
+        font-size: 14px;
+    }
+
+    .meet-container input[type="text"],
+    .meet-container input[type="datetime-local"] {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    .meet-container input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .meet-container input:focus {
+        border-color: #1a73e8;
+        box-shadow: 0 0 10px rgba(26,115,232,0.5);
+        outline: none;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .meet-container button {
+        width: 100%;
+        background: linear-gradient(135deg, #1a73e8, #155fc3);
+        border: none;
+        color: white;
+        font-weight: 600;
+        font-size: 15px;
+        border-radius: 10px;
+        padding: 12px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .meet-container button:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 15px rgba(26,115,232,0.5);
+    }
+
+    #meetLinkContainer {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 500;
+        color: #fff;
+        word-break: break-all;
+    }
+
+    #meetLinkContainer a {
+        color: #ffeb3b;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #meetLinkContainer a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="meet-container">
+    <h1>Create Google Meet</h1>
+    <form id="meetForm">
+        <label for="summary">Meeting Title</label>
+        <input type="text" id="summary" name="summary" placeholder="Enter project title" required />
+
+        <label for="startTime">Start Time</label>
+        <input type="datetime-local" id="startTime" name="startTime" required />
+
+        <label for="endTime">End Time</label>
+        <input type="datetime-local" id="endTime" name="endTime" required />
+
+        <button type="submit">Create Meet Link</button>
+    </form>
+
+    <h2 id="meetLinkContainer"></h2>
+</div>
+
+<script>
+    document.getElementById('meetForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const summary = document.getElementById('summary').value;
+        const startTime = new Date(document.getElementById('startTime').value).toISOString();
+        const endTime = new Date(document.getElementById('endTime').value).toISOString();
+
+        const meetLinkContainer = document.getElementById('meetLinkContainer');
+        meetLinkContainer.textContent = "Creating meeting... ⏳";
+
+        try {
+            const res = await fetch('/create-meet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ summary, startTime, endTime })
+            });
+
+            const result = await res.json();
+            if (result.meetLink) {
+                meetLinkContainer.innerHTML = `✅ Meet Link: <a href="${result.meetLink}" target="_blank">${result.meetLink}</a>`;
+            } else {
+                meetLinkContainer.textContent = "❌ Error creating Meet link.";
+            }
+        } catch (err) {
+            console.error(err);
+            meetLinkContainer.textContent = "⚠️ Something went wrong.";
+        }
+    });
+</script>

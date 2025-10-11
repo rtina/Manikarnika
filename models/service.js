@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const QuoteRequestSchema = new Schema(
   {
-    fullName: {
+    username: {
       type: String,
-      required: [true, "Full Name is required"],
+      required: [true, "Username is required"],
       trim: true,
     },
     emailAddress: {
